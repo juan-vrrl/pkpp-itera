@@ -1,7 +1,3 @@
-# Ryudhis Company Profile Website
-
-A modern, professional company profile website built with Next.js, TypeScript, Prisma, and Supabase. Features a complete admin panel for blog management and contact message handling with a rich text editor.
-
 ## Features
 
 ### Frontend
