@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, Users, Zap, Shield } from "lucide-react";
+import { Building2, MapPin, Phone, Mail, Clock } from "lucide-react";
 import {
   AnimatedSection,
   AnimatedCard,
@@ -9,99 +8,80 @@ import {
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <section className="relative bg-gradient-to-br from-primary/5 via-background to-accent/5 py-24 md:py-32">
+    <div className="flex flex-col">
+      <section className="relative bg-gradient-to-b from-yellow-500 via-yellow-600 to-yellow-700 py-48 ">
         <div className="container mx-auto px-4">
           <AnimatedSection
-            className="max-w-4xl mx-auto text-center"
+            className="max-w-5xl mx-auto text-center"
             direction="fade"
             duration={0.8}
           >
-            <h1 className="text-4xl md:text-6xl font-bold text-balance mb-6">
-              Professional Technology Solutions
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+              Selamat datang di Aplikasi PKPP ITERA
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground text-balance mb-8 leading-relaxed">
-              We craft accessible, pixel-perfect digital experiences that blend
-              thoughtful design with robust engineering for modern businesses.
+            <p className="text-xl md:text-2xl text-white text-balance mb-8 leading-relaxed">
+              Pusat Kurikulum Dan Pengembangan Pembelajaran
             </p>
-            <AnimatedSection direction="up" delay={0.3}>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" className="text-lg px-8">
-                  <Link href="/services">
-                    Our Services <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="text-lg px-8 bg-transparent"
-                >
-                  <Link href="/contact">Get in Touch</Link>
-                </Button>
-              </div>
-            </AnimatedSection>
           </AnimatedSection>
         </div>
       </section>
 
       <section className="py-24 bg-muted/30">
         <div className="container mx-auto px-4">
-          <AnimatedSection className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Why Choose Ryudhis Company?
+          <AnimatedSection className="text-center mb-16 flex flex-col">
+            <h2 className="text-3xl md:text-2xl font-bold mb-4 text-red-400 p-3 bg-red-100 rounded-md self-center">
+              Tentang
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-balance">
-              We combine innovation, reliability, and expertise to deliver
-              exceptional results for your business.
+              Pusat Kurikulum dan Pengembangan Pembelajaran (PKPP) merupakan
+              salah satu pusat yang berada di bawah Lembaga Penjaminan Mutu dan
+              Pengembangan Pembelajaran Institut Teknologi Sumatera (LPMPP) yang
+              bertanggung jawab dalam pengelolaan kurikulum dan inovasi
+              pembelajaran guna meningkatkan kualitas pendidikan.
             </p>
           </AnimatedSection>
 
           <AnimatedSection stagger className="grid md:grid-cols-3 gap-8">
-            <AnimatedCard>
+            <AnimatedCard className="group">
               <Card className="text-center p-8 hover:shadow-lg transition-shadow">
                 <CardContent className="pt-6">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Zap className="h-8 w-8 text-primary" />
+                  <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-red-400 transition-colors">
+                    <Building2 className="h-8 w-8 text-red-400 group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-2xl font-semibold mb-4">
-                    Innovation First
-                  </h3>
+                  <h3 className="text-2xl font-semibold mb-4">LPMPP</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    We leverage cutting-edge technologies and methodologies to
-                    create solutions that drive your business forward.
+                    Lembaga Penjaminan Mutu dan Pengembangan Pembelajaran
+                    Institut Teknologi Sumatera
                   </p>
                 </CardContent>
               </Card>
             </AnimatedCard>
 
-            <AnimatedCard>
+            <AnimatedCard className="group">
               <Card className="text-center p-8 hover:shadow-lg transition-shadow">
                 <CardContent className="pt-6">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Shield className="h-8 w-8 text-primary" />
+                  <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-red-400 transition-colors">
+                    <Building2 className="h-8 w-8 text-red-400 group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-2xl font-semibold mb-4">
-                    Reliable & Secure
-                  </h3>
+                  <h3 className="text-2xl font-semibold mb-4">LPMPP</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Built with security and reliability at the core, ensuring
-                    your systems perform flawlessly when it matters most.
+                    Lembaga Penjaminan Mutu dan Pengembangan Pembelajaran
+                    Institut Teknologi Sumatera
                   </p>
                 </CardContent>
               </Card>
             </AnimatedCard>
 
-            <AnimatedCard>
+            <AnimatedCard className="group">
               <Card className="text-center p-8 hover:shadow-lg transition-shadow">
                 <CardContent className="pt-6">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Users className="h-8 w-8 text-primary" />
+                  <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-red-400 transition-colors">
+                    <Building2 className="h-8 w-8 text-red-400 group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-2xl font-semibold mb-4">Expert Team</h3>
+                  <h3 className="text-2xl font-semibold mb-4">LPMPP</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Our experienced professionals work closely with you to
-                    understand your needs and deliver tailored solutions.
+                    Lembaga Penjaminan Mutu dan Pengembangan Pembelajaran
+                    Institut Teknologi Sumatera
                   </p>
                 </CardContent>
               </Card>
@@ -112,125 +92,178 @@ export default function HomePage() {
 
       <section className="py-24">
         <div className="container mx-auto px-4">
-          <AnimatedSection
-            className="max-w-3xl mx-auto text-center"
-            direction="up"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance">
-              Ready to Transform Your Business?
+          {/* Header */}
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3 text-balance">
+              <span className="text-red-500">—</span> Kontak{" "}
+              <span className="text-red-500">—</span>
             </h2>
-            <p className="text-xl text-muted-foreground mb-8 text-balance">
-              Let&#39;s discuss how we can help you achieve your technology
-              goals and drive growth.
+            <p className="text-lg text-muted-foreground text-balance">
+              Ada pertanyaan atau keluhan? silahkan hubungi kontak di bawah ini.
             </p>
-            <Button asChild size="lg" className="text-lg px-8">
-              <Link href="/contact">
-                Start Your Project <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-          </AnimatedSection>
+          </div>
+
+          {/* Contact Cards and Map */}
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* Left: Contact Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Address Card */}
+              <Card className="bg-neutral-50 dark:bg-neutral-950 border-0">
+                <CardContent className="pt-8 pb-6">
+                  <div className="flex flex-col items-start gap-4">
+                    <MapPin
+                      className="w-8 h-8 text-red-500"
+                      strokeWidth={1.5}
+                    />
+                    <div>
+                      <h3 className="font-semibold text-foreground text-lg mb-1">
+                        Address
+                      </h3>
+                      <p className="text-muted-foreground text-sm">
+                        Jln Terusan Ryacudu
+                        <br />
+                        Lampung Selatan, Indonesia
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Call Us Card */}
+              <Card className="bg-neutral-50 dark:bg-neutral-950 border-0">
+                <CardContent className="pt-8 pb-6">
+                  <div className="flex flex-col items-start gap-4">
+                    <Phone className="w-8 h-8 text-red-500" strokeWidth={1.5} />
+                    <div>
+                      <h3 className="font-semibold text-foreground text-lg mb-1">
+                        Call Us
+                      </h3>
+                      <p className="text-muted-foreground text-sm">
+                        (0721) 8030188
+                        <br />
+                        (0721) 8030189
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Email Us Card */}
+              <Card className="bg-neutral-50 dark:bg-neutral-950 border-0">
+                <CardContent className="pt-8 pb-6">
+                  <div className="flex flex-col items-start gap-4">
+                    <Mail className="w-8 h-8 text-red-500" strokeWidth={1.5} />
+                    <div>
+                      <h3 className="font-semibold text-foreground text-lg mb-1">
+                        Email Us
+                      </h3>
+                      <p className="text-muted-foreground text-sm">
+                        pkpp@itera.ac.id
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Open Hours Card */}
+              <Card className="bg-neutral-50 dark:bg-neutral-950 border-0">
+                <CardContent className="pt-8 pb-6">
+                  <div className="flex flex-col items-start gap-4">
+                    <Clock className="w-8 h-8 text-red-500" strokeWidth={1.5} />
+                    <div>
+                      <h3 className="font-semibold text-foreground text-lg mb-1">
+                        Open Hours
+                      </h3>
+                      <p className="text-muted-foreground text-sm">
+                        Monday - Friday
+                        <br />
+                        08:00AM - 04:00PM
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Right: Map */}
+            <div className="rounded-lg overflow-hidden shadow-md h-full min-h-96">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7944.813987609946!2d105.317408!3d-5.354699!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e40c30023a9c495%3A0x77f302ebeab5bc07!2sGedung%20Training%20Center%20(TC)%20Itera!5e0!3m2!1sen!2sid!4v1762171571494!5m2!1sen!2sid"
+                width="600"
+                height="450"
+                className="border-0"
+                loading="lazy"
+              ></iframe>
+            </div>
+          </div>
         </div>
       </section>
 
-      <footer className="bg-primary text-primary-foreground py-12 mt-auto">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="text-2xl font-bold mb-4">Ryudhis Company</h3>
-              <p className="text-primary-foreground/80 leading-relaxed">
-                Professional technology solutions for modern businesses.
+      <footer className="bg-[#F4F4F4] text-primary py-12 mt-auto">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="md:col-span-2">
+              <h3 className="text-2xl font-bold mb-4">PKPP ITERA</h3>
+              <p className="text-primary leading-relaxed">
+                Aplikasi Pusat Kurikulum Dan Pengembangan Pembelajaran
               </p>
             </div>
-            <div>
-              <h4 className="font-semibold mb-4">Company</h4>
-              <ul className="space-y-2 text-primary-foreground/80">
-                <li>
-                  <Link
-                    href="/about"
-                    className="hover:text-primary-foreground transition-colors"
-                  >
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services"
-                    className="hover:text-primary-foreground transition-colors"
-                  >
-                    Services
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/blog"
-                    className="hover:text-primary-foreground transition-colors"
-                  >
-                    Blog
-                  </Link>
-                </li>
-              </ul>
+
+            <div className="flex gap-10">
+              <div>
+                <h4 className="font-semibold mb-4">Useful Links</h4>
+                <ul className="space-y-2 text-primary">
+                  <li>
+                    <Link
+                      href="https://www.itera.ac.id/"
+                      className="hover:text-red-400 transition-colors"
+                    >
+                      ITERA
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://lpmpp.itera.ac.id/"
+                      className="hover:text-red-400 transition-colors"
+                    >
+                      LPMPP
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://lppm.itera.ac.id/"
+                      className="hover:text-red-400 transition-colors"
+                    >
+                      LPPM
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="font-semibold mb-4">Contact Us</h4>
+                <div className="space-y-2 text-primary">
+                  <p>Gedung Training Center (TC)</p>
+                  <p>Institut Teknologi Sumatera</p>
+                  <p>Jln Terusan Ryacudu</p>
+                  <p>Lampung Selatan, Indonesia</p>
+                </div>
+                <div className="text-primary mt-4">
+                  <p>
+                    <span className="font-semibold">Phone</span> : (0721)
+                    8030188
+                  </p>
+                  <p>
+                    <span className="font-semibold">Email</span> :
+                    pkpp@itera.ac.id
+                  </p>
+                </div>
+              </div>
             </div>
-            <div>
-              <h4 className="font-semibold mb-4">Support</h4>
-              <ul className="space-y-2 text-primary-foreground/80">
-                <li>
-                  <Link
-                    href="/contact"
-                    className="hover:text-primary-foreground transition-colors"
-                  >
-                    Contact
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="hover:text-primary-foreground transition-colors"
-                  >
-                    Help Center
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="hover:text-primary-foreground transition-colors"
-                  >
-                    Privacy Policy
-                  </Link>
-                </li>
-              </ul>
+
+            <div className="md:col-span-3 border-t border-primary mt-8 pt-8 text-center text-primary">
+              <p>&copy; 2025 ITERA. All rights reserved.</p>
             </div>
-            <div>
-              <h4 className="font-semibold mb-4">Connect</h4>
-              <ul className="space-y-2 text-primary-foreground/80">
-                <li>
-                  <Link
-                    href="#"
-                    className="hover:text-primary-foreground transition-colors"
-                  >
-                    LinkedIn
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="hover:text-primary-foreground transition-colors"
-                  >
-                    Twitter
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="hover:text-primary-foreground transition-colors"
-                  >
-                    GitHub
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-primary-foreground/60">
-            <p>&copy; 2025 Ryudhis Company. All rights reserved.</p>
           </div>
         </div>
       </footer>

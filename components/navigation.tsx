@@ -9,11 +9,11 @@ import { Menu, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 const navigation = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Services", href: "/services" },
-  { name: "Contact", href: "/contact" },
-  { name: "Blog", href: "/blog" },
+  { name: "Beranda", href: "/" },
+  { name: "Profil", href: "/about" },
+  { name: "Informasi", href: "/services" },
+  { name: "Berita", href: "/blog" },
+  { name: "Kontak", href: "/contact" },
 ];
 
 export function Navigation() {
@@ -38,8 +38,8 @@ export function Navigation() {
   }, [isOpen]);
 
   return (
-    <header className="sticky px-4 lg:px-8 top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
+    <header className="sticky px-4 lg:px-8 top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="w-full flex h-16 items-center justify-between px-[15%]">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -50,7 +50,7 @@ export function Navigation() {
             className="flex items-center space-x-2 cursor-pointer"
           >
             <span className="text-2xl font-bold text-primary">
-              Ryudhis Company
+              PKPP ITERA
             </span>
           </button>
         </motion.div>
@@ -99,12 +99,12 @@ export function Navigation() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <Button
-              className="cursor-pointer"
+              className="cursor-pointer bg-[#E84545] text-shadow-white hover:bg-[#da6d6d]"
               onClick={() => router.push("/admin/login")}
-              variant="outline"
-              size="sm"
+              variant="default"
+              size="lg"
             >
-              Admin
+              Masuk
             </Button>
           </motion.div>
 

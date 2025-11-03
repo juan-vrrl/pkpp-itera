@@ -7,9 +7,9 @@ import { Suspense } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Ryudhis Company - Professional Technology Solutions",
+  title: "Pusat Kurikulum Dan Pengembangan Pembelajaran",
   description:
-    "Leading technology company providing innovative solutions for modern businesses",
+    "Pusat Kurikulum dan Pengembangan Pembelajaran ITERA",
 };
 
 export default function RootLayout({
