@@ -1,4 +1,5 @@
-import Link from "next/link";
+"use client";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Building2, MapPin, Phone, Mail, Clock } from "lucide-react";
 import {
@@ -6,7 +7,18 @@ import {
   AnimatedCard,
 } from "@/components/animations/animated-section";
 
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 export default function HomePage() {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: "ease-in-out",
+      once: true,
+    });
+  }, []);
   return (
     <div className="flex flex-col">
       <section className="relative bg-gradient-to-b from-yellow-500 via-yellow-600 to-yellow-700 py-48 ">
@@ -90,10 +102,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-24">
+      <section className="py-24" id="kontak">
         <div className="container mx-auto px-4">
           {/* Header */}
-          <div className="max-w-3xl mx-auto text-center mb-12">
+          <div
+            className="max-w-3xl mx-auto text-center mb-12"
+            data-aos="fade-up"
+          >
             <h2 className="text-3xl md:text-4xl font-bold mb-3 text-balance">
               <span className="text-red-500">—</span> Kontak{" "}
               <span className="text-red-500">—</span>
@@ -108,7 +123,11 @@ export default function HomePage() {
             {/* Left: Contact Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Address Card */}
-              <Card className="bg-neutral-50 dark:bg-neutral-950 border-0">
+              <Card
+                className="bg-neutral-50 dark:bg-neutral-950 border-0"
+                data-aos="fade-up"
+                data-aos-delay="100"
+              >
                 <CardContent className="pt-8 pb-6">
                   <div className="flex flex-col items-start gap-4">
                     <MapPin
@@ -130,7 +149,11 @@ export default function HomePage() {
               </Card>
 
               {/* Call Us Card */}
-              <Card className="bg-neutral-50 dark:bg-neutral-950 border-0">
+              <Card
+                className="bg-neutral-50 dark:bg-neutral-950 border-0"
+                data-aos="fade-up"
+                data-aos-delay="200"
+              >
                 <CardContent className="pt-8 pb-6">
                   <div className="flex flex-col items-start gap-4">
                     <Phone className="w-8 h-8 text-red-500" strokeWidth={1.5} />
@@ -149,7 +172,11 @@ export default function HomePage() {
               </Card>
 
               {/* Email Us Card */}
-              <Card className="bg-neutral-50 dark:bg-neutral-950 border-0">
+              <Card
+                className="bg-neutral-50 dark:bg-neutral-950 border-0"
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
                 <CardContent className="pt-8 pb-6">
                   <div className="flex flex-col items-start gap-4">
                     <Mail className="w-8 h-8 text-red-500" strokeWidth={1.5} />
@@ -166,7 +193,11 @@ export default function HomePage() {
               </Card>
 
               {/* Open Hours Card */}
-              <Card className="bg-neutral-50 dark:bg-neutral-950 border-0">
+              <Card
+                className="bg-neutral-50 dark:bg-neutral-950 border-0"
+                data-aos="fade-up"
+                data-aos-delay="400"
+              >
                 <CardContent className="pt-8 pb-6">
                   <div className="flex flex-col items-start gap-4">
                     <Clock className="w-8 h-8 text-red-500" strokeWidth={1.5} />
@@ -186,87 +217,23 @@ export default function HomePage() {
             </div>
 
             {/* Right: Map */}
-            <div className="rounded-lg overflow-hidden shadow-md h-full min-h-96">
+            <div
+              className="rounded-lg overflow-hidden shadow-md h-full min-h-96"
+              data-aos="zoom-in"
+              data-aos-delay="500"
+            >
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7944.813987609946!2d105.317408!3d-5.354699!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e40c30023a9c495%3A0x77f302ebeab5bc07!2sGedung%20Training%20Center%20(TC)%20Itera!5e0!3m2!1sen!2sid!4v1762171571494!5m2!1sen!2sid"
                 width="600"
                 height="450"
-                className="border-0"
+                className="border-0 w-full h-full"
                 loading="lazy"
+                allowFullScreen
               ></iframe>
             </div>
           </div>
         </div>
       </section>
-
-      <footer className="bg-[#F4F4F4] text-primary py-12 mt-auto">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="md:col-span-2">
-              <h3 className="text-2xl font-bold mb-4">PKPP ITERA</h3>
-              <p className="text-primary leading-relaxed">
-                Aplikasi Pusat Kurikulum Dan Pengembangan Pembelajaran
-              </p>
-            </div>
-
-            <div className="flex gap-10">
-              <div>
-                <h4 className="font-semibold mb-4">Useful Links</h4>
-                <ul className="space-y-2 text-primary">
-                  <li>
-                    <Link
-                      href="https://www.itera.ac.id/"
-                      className="hover:text-red-400 transition-colors"
-                    >
-                      ITERA
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="https://lpmpp.itera.ac.id/"
-                      className="hover:text-red-400 transition-colors"
-                    >
-                      LPMPP
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="https://lppm.itera.ac.id/"
-                      className="hover:text-red-400 transition-colors"
-                    >
-                      LPPM
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="font-semibold mb-4">Contact Us</h4>
-                <div className="space-y-2 text-primary">
-                  <p>Gedung Training Center (TC)</p>
-                  <p>Institut Teknologi Sumatera</p>
-                  <p>Jln Terusan Ryacudu</p>
-                  <p>Lampung Selatan, Indonesia</p>
-                </div>
-                <div className="text-primary mt-4">
-                  <p>
-                    <span className="font-semibold">Phone</span> : (0721)
-                    8030188
-                  </p>
-                  <p>
-                    <span className="font-semibold">Email</span> :
-                    pkpp@itera.ac.id
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="md:col-span-3 border-t border-primary mt-8 pt-8 text-center text-primary">
-              <p>&copy; 2025 ITERA. All rights reserved.</p>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

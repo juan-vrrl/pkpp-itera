@@ -49,6 +49,7 @@
     "@tiptap/react": "latest",
     "@tiptap/starter-kit": "latest",
     "@vercel/analytics": "latest",
+    "aos": "^2.3.4",
     "autoprefixer": "^10.4.20",
     "bcryptjs": "latest",
     "class-variance-authority": "^0.7.1",
@@ -81,6 +82,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/aos": "^3.0.7",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^20",
     "@types/react": "^19",
