@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation"
 const dropdownMenus = {
   profile: [
     { name: "Tentang", href: "/tentang" },
-    { name: "Visi / Misi", href: "/visi-misi" },
+    { name: "Visi & Misi", href: "/visi-misi" },
     { name: "Tugas Pokok", href: "/tugas-pokok" },
     { name: "Struktur Organisasi", href: "/struktur-organisasi" },
     { name: "SDM", href: "/sdm" },
