@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Menu, X, ChevronDown } from "lucide-react"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
 
 const dropdownMenus = {
   profile: [
@@ -91,6 +92,7 @@ export function Navigation() {
       <div className="w-full flex h-16 items-center justify-between px-[15%]">
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
           <button onClick={() => router.push("/")} className="flex items-center space-x-2 cursor-pointer">
+            <Image src="/Logo1.png" alt="PKPP ITERA Logo" width={45} height={45} />
             <span className="text-2xl font-bold text-primary">PKPP ITERA</span>
           </button>
         </motion.div>

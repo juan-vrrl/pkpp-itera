@@ -21,20 +21,69 @@ export default function HomePage() {
   }, []);
   return (
     <div className="flex flex-col">
-      <section className="relative bg-gradient-to-b from-yellow-500 via-yellow-600 to-yellow-700 py-48 ">
-        <div className="container mx-auto px-4">
-          <AnimatedSection
-            className="max-w-5xl mx-auto text-center"
-            direction="fade"
-            duration={0.8}
+      <section className="relative w-full overflow-hidden bg-[#fdfaf1] py-24 md:py-32">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div
+            className="absolute -top-20 -right-20 w-80 h-80 bg-gradient-to-br from-amber-100 to-orange-300 rounded-full blur-3xl opacity-20"
+            data-aos="fade-down-left"
+          />
+          <div
+            className="absolute top-1/2 -left-32 w-96 h-96 bg-gradient-to-r from-yellow-100 to-amber-200 rounded-full blur-3xl opacity-15"
+            data-aos="fade-up-right"
+          />
+
+          <svg
+            className="absolute inset-0 w-full h-full"
+            viewBox="0 0 1200 600"
+            preserveAspectRatio="none"
+            data-aos="fade-in"
+            data-aos-delay="200"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-              Selamat datang di Aplikasi PKPP ITERA
-            </h1>
-            <p className="text-xl md:text-2xl text-white text-balance mb-8 leading-relaxed">
+            <path
+              d="M 0 300 Q 300 200, 600 300 T 1200 300"
+              stroke="rgba(251, 146, 60, 0.1)"
+              strokeWidth="2"
+              fill="none"
+            />
+            <path
+              d="M 0 250 Q 400 100, 800 250 T 1200 250"
+              stroke="rgba(217, 119, 6, 0.15)"
+              strokeWidth="1"
+              fill="none"
+            />
+          </svg>
+        </div>
+
+        {/* Hero Content */}
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="flex flex-col justify-center">
+            <div
+              className="inline-flex items-center gap-2 w-fit mb-6"
+              data-aos="fade-down"
+            >
+              <div className="w-2 h-2 bg-orange-500 rounded-full" />
+              <span className="text-sm font-semibold text-orange-600 tracking-wider uppercase">
+                Selamat Datang
+              </span>
+            </div>
+
+            <div className="mb-6" data-aos="fade-up" data-aos-delay="200">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-balance">
+                <span className="block">Aplikasi</span>
+                <span className="bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 bg-clip-text text-transparent">
+                  PKPP ITERA
+                </span>
+              </h1>
+            </div>
+
+            <p
+              className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed text-balance font-semibold"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
               Pusat Kurikulum Dan Pengembangan Pembelajaran
             </p>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
