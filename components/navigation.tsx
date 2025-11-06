@@ -28,8 +28,8 @@ const navigation: Array<
 > = [
   { name: "Beranda", href: "/" },
   { name: "Profil", dropdownItems: "profile" },
-  { name: "Informasi", href: "/services" },
-  { name: "Berita", href: "/blog" },
+  { name: "Informasi", href: "" },
+  { name: "Berita", href: "/" },
   { name: "Kontak", href: "#kontak" },
 ]
 
