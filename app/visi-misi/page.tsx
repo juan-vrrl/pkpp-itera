@@ -41,13 +41,13 @@ export default function VisiMisiPage() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-yellow-500 via-yellow-600 to-yellow-700 text-white py-20 md:py-28">
+      <div className="relative overflow-hidden bg-gradient-to-br from-yellow-500 via-yellow-600 to-yellow-700 text-white py-12 md:py-16">
 
         <div className="relative max-w-5xl mx-auto px-6 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-balance leading-tight" data-aos="fade-down">
+          <h1 className="text-3xl md:text-4xl font-bold mb-3 text-balance leading-tight" data-aos="fade-down">
             Visi & Misi
           </h1>
-          <p className="text-xl md:text-2xl text-red-100 text-pretty max-w-2xl mx-auto" data-aos="fade-up">
+          <p className="text-base md:text-lg text-red-100 text-pretty max-w-2xl mx-auto" data-aos="fade-up">
             Panduan strategis menuju transformasi dan pencapaian excellence
           </p>
         </div>

@@ -78,15 +78,15 @@ export default function ProgramKerja() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-yellow-500 via-yellow-600 to-yellow-700 text-white py-20 md:py-28">
+      <div className="relative overflow-hidden bg-gradient-to-br from-yellow-500 via-yellow-600 to-yellow-700 text-white py-12 md:py-16">
         <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 translate-y-1/2 -translate-x-1/2"></div>
 
         <div className="relative max-w-5xl mx-auto px-6 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-balance leading-tight" data-aos="fade-down">
+          <h1 className="text-3xl md:text-4xl font-bold mb-3 text-balance leading-tight" data-aos="fade-down">
             Program Kerja
           </h1>
-          <p className="text-xl md:text-2xl text-red-100 text-pretty max-w-2xl mx-auto" data-aos="fade-up">
+          <p className="text-base md:text-lg text-red-100 text-pretty max-w-2xl mx-auto" data-aos="fade-up">
             Program Kerja Pusat Kurikulum dan Pengembangan Pembelajaran
           </p>
         </div>
