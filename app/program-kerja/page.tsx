@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { ChevronDown, Target } from "lucide-react"
-import { useState, useEffect } from "react"
-import AOS from "aos"
-import "aos/dist/aos.css"
+import Link from "next/link";
+import { ChevronDown, Target } from "lucide-react";
+import { useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const PROGRAMS = [
   {
@@ -58,22 +58,24 @@ const PROGRAMS = [
       "Koordinasi Follow Up Program dan Visi/Misi AMI",
     ],
   },
-]
+];
 
 export default function ProgramKerja() {
-  const [expandedItems, setExpandedItems] = useState<string[]>([])
+  const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
   useEffect(() => {
     AOS.init({
       duration: 1000,
       once: true,
       easing: "ease-in-out",
-    })
-  }, [])
+    });
+  }, []);
 
   const toggleItem = (id: string) => {
-    setExpandedItems((prev) => (prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]))
-  }
+    setExpandedItems((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+    );
+  };
 
   return (
     <div className="w-full">
@@ -83,20 +85,32 @@ export default function ProgramKerja() {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 translate-y-1/2 -translate-x-1/2"></div>
 
         <div className="relative max-w-5xl mx-auto px-6 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold mb-3 text-balance leading-tight" data-aos="fade-down">
+          <h1
+            className="text-3xl md:text-4xl font-bold mb-3 text-balance leading-tight"
+            data-aos="fade-down"
+          >
             Program Kerja
           </h1>
-          <p className="text-base md:text-lg text-red-100 text-pretty max-w-2xl mx-auto" data-aos="fade-up">
+          <p
+            className="text-base md:text-lg text-red-100 text-pretty max-w-2xl mx-auto"
+            data-aos="fade-up"
+          >
             Program Kerja Pusat Kurikulum dan Pengembangan Pembelajaran
           </p>
         </div>
       </div>
 
       {/* Breadcrumb */}
-      <div data-aos="flip-up" className="bg-gray-50 border-b border-gray-200 px-6 py-4">
+      <div
+        data-aos="flip-up"
+        className="bg-gray-50 border-b border-gray-200 px-6 py-4"
+      >
         <div className="max-w-5xl mx-auto">
           <nav className="flex items-center gap-2 text-sm">
-            <Link href="/" className="text-red-600 hover:text-red-700 font-medium transition-colors">
+            <Link
+              href="/"
+              className="text-red-600 hover:text-red-700 font-medium transition-colors"
+            >
               Beranda
             </Link>
             <span className="text-gray-400">/</span>
@@ -112,21 +126,28 @@ export default function ProgramKerja() {
           className="mb-16 bg-gradient-to-r from-red-50 to-yellow-50 rounded-lg border border-red-200 p-8"
           data-aos="fade-right"
         >
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Program Kerja PKPP : </h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            Program Kerja PKPP :{" "}
+          </h2>
           <p className="text-gray-700 leading-relaxed">
-            Berikut adalah daftar lengkap program kerja yang akan dilaksanakan oleh tim Pusat Kurikulum dan Pengembangan Pembelajaran (PKPP)
-            dalam upaya peningkatan kualitas dan akreditasi institusi.
+            Berikut adalah daftar lengkap program kerja yang akan dilaksanakan
+            oleh tim Pusat Kurikulum dan Pengembangan Pembelajaran (PKPP) dalam
+            upaya peningkatan kualitas dan akreditasi institusi.
           </p>
         </div>
 
         {/* Programs Timeline */}
         <div className="space-y-6">
           {PROGRAMS.map((program, index) => {
-            const Icon = program.icon
-            const isExpanded = expandedItems.includes(program.id)
+            const Icon = program.icon;
+            const isExpanded = expandedItems.includes(program.id);
 
             return (
-              <div key={program.id} data-aos="fade-up" data-aos-delay={`${index * 100}`}>
+              <div
+                key={program.id}
+                data-aos="fade-up"
+                data-aos-delay={`${index * 100}`}
+              >
                 {/* Program Header */}
                 <div
                   className="flex items-start gap-4 p-6 bg-white rounded-t-lg border border-gray-200 cursor-pointer hover:border-red-300 transition-all group"
@@ -152,7 +173,9 @@ export default function ProgramKerja() {
                           </span>
                           {program.category}
                         </h3>
-                        <p className="text-sm text-gray-600">{program.items.length} kegiatan</p>
+                        <p className="text-sm text-gray-600">
+                          {program.items.length} kegiatan
+                        </p>
                       </div>
                       <ChevronDown
                         className={`w-5 h-5 text-gray-600 transition-transform duration-300 flex-shrink-0 mt-1 ${
@@ -163,21 +186,28 @@ export default function ProgramKerja() {
                   </div>
                 </div>
 
-                {/* Program Items */}
-                {isExpanded && (
+                <div
+                  className={`overflow-hidden transition-[max-height] duration-500 ease-in-out ${
+                    isExpanded ? "max-h-[1000px]" : "max-h-0"
+                  }`}
+                >
                   <div className="bg-gradient-to-b from-gray-50 to-white border border-t-0 border-gray-200 rounded-b-lg p-6">
                     <ol className="space-y-3">
                       {program.items.map((item, itemIndex) => (
                         <li key={itemIndex} className="flex gap-4">
-                          <span className="text-red-600 font-semibold flex-shrink-0 w-6">{itemIndex + 1}.</span>
-                          <span className="text-gray-700 leading-relaxed">{item}</span>
+                          <span className="text-red-600 font-semibold flex-shrink-0 w-6">
+                            {itemIndex + 1}.
+                          </span>
+                          <span className="text-gray-700 leading-relaxed">
+                            {item}
+                          </span>
                         </li>
                       ))}
                     </ol>
                   </div>
-                )}
+                </div>
               </div>
-            )
+            );
           })}
         </div>
 
@@ -187,7 +217,9 @@ export default function ProgramKerja() {
             className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 border border-blue-200"
             data-aos="fade-up"
           >
-            <div className="text-3xl font-bold text-blue-600 mb-2">{PROGRAMS.length}</div>
+            <div className="text-3xl font-bold text-blue-600 mb-2">
+              {PROGRAMS.length}
+            </div>
             <p className="text-blue-900 font-medium">Kategori Program</p>
           </div>
           <div
@@ -203,5 +235,5 @@ export default function ProgramKerja() {
         </div>
       </div>
     </div>
-  )
+  );
 }
