@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { ConditionalNavigationClient } from "@/components/ConditionalNavigationClient";
-import { Footer } from "@/components/Footer";
+import { ConditionalFooter } from "@/components/ConditionalFooter";
 import { Suspense } from "react";
 import "./globals.css";
 
@@ -24,7 +24,7 @@ export default function RootLayout({
         <Suspense fallback={<div>Loading...</div>}>
           <ConditionalNavigationClient />
           {children}
-          <Footer />
+          <ConditionalFooter />
         </Suspense>
       </body>
     </html>

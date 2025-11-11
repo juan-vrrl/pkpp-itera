@@ -66,7 +66,7 @@ export function AdminNavigation({ user }: AdminNavigationProps) {
         <div className="flex items-center space-x-2 sm:space-x-8">
           <Link href="/admin/dashboard" className="flex items-center space-x-2">
             <span className="text-lg sm:text-xl lg:text-2xl font-bold text-primary truncate">
-              <span className="hidden sm:inline">Ryudhis Company Admin</span>
+              <span className="hidden sm:inline">PKPP Admin</span>
               <span className="sm:hidden">Admin</span>
             </span>
           </Link>
