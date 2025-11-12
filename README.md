@@ -1,10 +1,7 @@
 ## Features
 
 ### Frontend
-- **Modern Design**: Clean, professional design inspired by top portfolio websites
 - **Responsive Layout**: Mobile-first design that works on all devices
-- **Company Pages**: Home, About, Services, Contact, and Blog sections
-- **Contact Form**: Functional contact form that saves messages to database
 
 ### Admin Panel
 - **Secure Authentication**: JWT-based authentication with HTTP-only cookies (Admin only)
@@ -15,12 +12,11 @@
 - **Admin Dashboard**: Overview of blog and contact statistics with quick actions
 
 ### Technical Stack
-- **Frontend**: Next.js 15, React 19, TypeScript
-- **Styling**: Tailwind CSS v4, shadcn/ui components
+- **Frontend**: Next.js, React, TypeScript
+- **Styling**: Tailwind CSS, shadcn/ui components
 - **Database**: PostgreSQL (Supabase), Prisma ORM
 - **Authentication**: JWT tokens, bcrypt password hashing (Admin only)
 - **Rich Text**: Tiptap editor with extensions
-- **Deployment**: Vercel-ready configuration
 
 ## Getting Started
 
