@@ -2,10 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect } from "react";
 
 export default function StrukturOrganisasi() {
-  useEffect(() => {
 
   return (
     <div className="w-full">

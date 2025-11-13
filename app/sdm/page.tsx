@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 interface StaffMember {
@@ -190,7 +190,6 @@ function DepartmentAccordion({ department }: { department: Department }) {
 }
 
 export default function SDM() {
-  useEffect(() => {
 
   return (
     <div className="w-full">

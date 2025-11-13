@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Building2, MapPin, Phone, Mail, Clock } from "lucide-react";
+import { Building2, School, MapPin, Phone, Mail, Clock } from "lucide-react";
 import {
   AnimatedSection,
   AnimatedCard,
@@ -91,15 +91,15 @@ export default function HomePage() {
             </p>
           </AnimatedSection>
 
-          <AnimatedSection stagger className="grid md:grid-cols-3 gap-8">
-            <AnimatedCard className="group">
-              <Card className="text-center p-8 hover:shadow-lg transition-shadow">
-                <CardContent className="pt-6">
+          <AnimatedSection stagger className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <AnimatedCard className="group h-full">
+              <Card className="text-center p-8 hover:shadow-lg transition-shadow h-full flex flex-col">
+                <CardContent className="pt-6 flex-1 flex flex-col">
                   <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-red-400 transition-colors">
                     <Building2 className="h-8 w-8 text-red-400 group-hover:text-white transition-colors" />
                   </div>
                   <h3 className="text-2xl font-semibold mb-4">LPMPP</h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed flex-1">
                     Lembaga Penjaminan Mutu dan Pengembangan Pembelajaran
                     Institut Teknologi Sumatera
                   </p>
@@ -107,31 +107,15 @@ export default function HomePage() {
               </Card>
             </AnimatedCard>
 
-            <AnimatedCard className="group">
-              <Card className="text-center p-8 hover:shadow-lg transition-shadow">
-                <CardContent className="pt-6">
+            <AnimatedCard className="group h-full">
+              <Card className="text-center p-8 hover:shadow-lg transition-shadow h-full flex flex-col">
+                <CardContent className="pt-6 flex-1 flex flex-col">
                   <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-red-400 transition-colors">
-                    <Building2 className="h-8 w-8 text-red-400 group-hover:text-white transition-colors" />
+                    <School className="h-8 w-8 text-red-400 group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-2xl font-semibold mb-4">LPMPP</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Lembaga Penjaminan Mutu dan Pengembangan Pembelajaran
-                    Institut Teknologi Sumatera
-                  </p>
-                </CardContent>
-              </Card>
-            </AnimatedCard>
-
-            <AnimatedCard className="group">
-              <Card className="text-center p-8 hover:shadow-lg transition-shadow">
-                <CardContent className="pt-6">
-                  <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-red-400 transition-colors">
-                    <Building2 className="h-8 w-8 text-red-400 group-hover:text-white transition-colors" />
-                  </div>
-                  <h3 className="text-2xl font-semibold mb-4">LPMPP</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Lembaga Penjaminan Mutu dan Pengembangan Pembelajaran
-                    Institut Teknologi Sumatera
+                  <h3 className="text-2xl font-semibold mb-4">PKPP</h3>
+                  <p className="text-muted-foreground leading-relaxed flex-1">
+                    Pusat Kurikulum dan Pengembangan Pembelajaran
                   </p>
                 </CardContent>
               </Card>

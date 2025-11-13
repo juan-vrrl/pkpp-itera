@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ChevronDown, Target } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const PROGRAMS = [
   {
@@ -60,8 +60,6 @@ const PROGRAMS = [
 
 export default function ProgramKerja() {
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
-
-  useEffect(() => {
 
   const toggleItem = (id: string) => {
     setExpandedItems((prev) =>

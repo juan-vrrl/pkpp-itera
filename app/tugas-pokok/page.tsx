@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
-import { useEffect } from "react";
 
 const TUGAS_POKOK = [
   {
@@ -62,9 +61,6 @@ const TUGAS_POKOK = [
 ];
 
 export default function TugasPokok() {
-
-  useEffect(() => {
-
   return (
     <div className="w-full">
       {/* Hero Section */}

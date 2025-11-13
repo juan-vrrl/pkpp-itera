@@ -2,12 +2,10 @@
 
 import Link from "next/link";
 import { ArrowRight, FileText, Target } from "lucide-react";
-import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function TentangPage() {
   const router = useRouter();
-  useEffect(() => {
 
   return (
     <div className="w-full">
