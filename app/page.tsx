@@ -7,18 +7,7 @@ import {
   AnimatedCard,
 } from "@/components/animations/animated-section";
 
-import { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
-
 export default function HomePage() {
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-      easing: "ease-in-out",
-      once: true,
-    });
-  }, []);
   return (
     <div className="flex flex-col">
       <section className="relative w-full overflow-hidden bg-[#fdfaf1] py-24 md:py-32">

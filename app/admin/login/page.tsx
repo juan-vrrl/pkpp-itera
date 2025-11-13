@@ -2,9 +2,6 @@
 
 import type React from "react";
 
-import { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -60,13 +57,6 @@ export default function AdminLoginPage() {
       [e.target.name]: e.target.value,
     });
   };
-
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-      easing: "ease-in-out",
-    });
-  }, []);
 
   return (
     <div

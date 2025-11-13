@@ -4,8 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 interface StaffMember {
   id: string;
@@ -193,12 +191,6 @@ function DepartmentAccordion({ department }: { department: Department }) {
 
 export default function SDM() {
   useEffect(() => {
-    AOS.init({
-      duration: 800,
-      easing: "ease-in-out",
-      once: true,
-    });
-  }, []);
 
   return (
     <div className="w-full">

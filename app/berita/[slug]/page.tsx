@@ -6,8 +6,6 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { CalendarDays, ArrowLeft, Loader2, BookOpen } from "lucide-react"
-import AOS from "aos"
-import "aos/dist/aos.css"
 
 interface Post {
   id: string
@@ -34,12 +32,6 @@ export default function BlogPostPage() {
   const [notFoundError, setNotFoundError] = useState(false)
 
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-      easing: "ease-in-out",
-    })
-
     async function fetchPost() {
       if (!slug) return
 

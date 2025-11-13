@@ -22,9 +22,9 @@ interface AdminNavigationProps {
 
 const navigation = [
   { name: "Dashboard", href: "/admin/dashboard", icon: Home },
-  { name: "Blog Posts", href: "/admin/posts", icon: FileText },
-  { name: "Messages", href: "/admin/messages", icon: MessageSquare },
-  { name: "Settings", href: "/admin/settings", icon: Settings },
+  { name: "Posts", href: "/admin/posts", icon: FileText },
+  { name: "Pesan", href: "/admin/messages", icon: MessageSquare },
+  { name: "Pengaturan", href: "/admin/settings", icon: Settings },
 ]
 
 export function AdminNavigation({ user }: AdminNavigationProps) {
@@ -61,11 +61,11 @@ export function AdminNavigation({ user }: AdminNavigationProps) {
   }
 
   return (
-    <header className="px-4 lg:px-8 sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="px-4 lg:px-8 sticky top-0 z-50 w-full border-b bg-gradient-to-br from-yellow-500 to-yellow-600 text-white shadow-md">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center space-x-2 sm:space-x-8">
           <Link href="/admin/dashboard" className="flex items-center space-x-2">
-            <span className="text-lg sm:text-xl lg:text-2xl font-bold text-primary truncate">
+            <span className="text-lg sm:text-xl lg:text-2xl font-bold truncate">
               <span className="hidden sm:inline">PKPP Admin</span>
               <span className="sm:hidden">Admin</span>
             </span>
@@ -79,10 +79,10 @@ export function AdminNavigation({ user }: AdminNavigationProps) {
                   key={item.name}
                   href={item.href}
                   className={cn(
-                    "flex items-center space-x-2 text-sm font-medium transition-colors hover:text-primary",
+                    "flex items-center space-x-2 text-sm font-medium transition-colors hover:text-white/80",
                     pathname === item.href
-                      ? "text-primary"
-                      : "text-muted-foreground"
+                      ? "text-white border-b-2 border-white pb-1"
+                      : "text-white/70"
                   )}
                 >
                   <Icon className="h-4 w-4" />
@@ -139,18 +139,18 @@ export function AdminNavigation({ user }: AdminNavigationProps) {
             asChild
             variant="outline"
             size="sm"
-            className="hidden sm:flex"
+            className="hidden sm:flex hover:text-red-600 bg-black"
           >
-            <Link href="/">View Website</Link>
+            <Link href="/">Lihat Website</Link>
           </Button>
 
           <Button
             asChild
             variant="outline"
             size="sm"
-            className="sm:hidden h-8 w-8 p-0"
+            className="sm:hidden h-8 w-8 p-0 border-white text-white hover:bg-white hover:text-red-600"
           >
-            <Link href="/" title="View Website">
+            <Link href="/" title="Lihat Website">
               <Home className="h-4 w-4" />
             </Link>
           </Button>
@@ -160,7 +160,7 @@ export function AdminNavigation({ user }: AdminNavigationProps) {
               <Button
                 variant="ghost"
                 size="sm"
-                className="h-8 px-2 text-xs sm:text-sm cursor-pointer"
+                className="h-8 px-2 text-xs sm:text-sm cursor-pointer text-white hover:bg-white/20"
               >
                 <span className="max-w-[80px] sm:max-w-[120px] truncate">
                   {user.name || user.email}
@@ -174,13 +174,13 @@ export function AdminNavigation({ user }: AdminNavigationProps) {
                   className="flex items-center space-x-2"
                 >
                   <Settings className="h-4 w-4" />
-                  <span>Settings</span>
+                  <span>Pengaturan</span>
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem onClick={handleLogout} disabled={isLoggingOut}>
                 <LogOut className="mr-2 h-4 w-4" />
-                {isLoggingOut ? "Logging out..." : "Logout"}
+                {isLoggingOut ? "Keluar..." : "Keluar"}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

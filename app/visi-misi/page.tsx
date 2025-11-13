@@ -2,19 +2,8 @@
 
 import Link from "next/link"
 import {Eye, Target, Lightbulb, Heart } from "lucide-react"
-import AOS from "aos"
-import "aos/dist/aos.css"
-import { useEffect } from "react"
 
 export default function VisiMisiPage() {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-      easing: "ease-in-out",
-    })
-  }, [])
-
   const values = [
     {
       icon: Eye,

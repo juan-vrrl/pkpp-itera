@@ -3,8 +3,6 @@
 import Link from "next/link"
 import Image from "next/image"
 import { CalendarDays, ArrowRight, BookOpen } from "lucide-react"
-import AOS from "aos"
-import "aos/dist/aos.css"
 import { useEffect, useState } from "react"
 
 interface Post {
@@ -30,12 +28,6 @@ export default function BeritaPage() {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    AOS.init({
-      duration: 500,
-      once: true,
-      easing: "ease-in-out",
-    })
-
     // Fetch posts from API
     const fetchPosts = async () => {
       try {

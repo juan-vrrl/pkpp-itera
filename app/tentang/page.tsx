@@ -2,20 +2,12 @@
 
 import Link from "next/link";
 import { ArrowRight, FileText, Target } from "lucide-react";
-import AOS from "aos";
-import "aos/dist/aos.css"; // import AOS styles
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function TentangPage() {
   const router = useRouter();
   useEffect(() => {
-    AOS.init({
-      duration: 1000, // animation duration (ms)
-      once: true, // whether animation happens only once
-      easing: "ease-in-out",
-    });
-  }, []);
 
   return (
     <div className="w-full">

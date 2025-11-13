@@ -21,7 +21,7 @@ export default async function AdminLayout({
   }
 
   return (
-    <div className="min-h-screen bg-muted/30">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-yellow-50/30 to-red-50/30">
       <AdminNavigation user={user} />
       <main className="container mx-auto px-4 py-8">{children}</main>
     </div>

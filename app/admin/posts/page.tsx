@@ -26,54 +26,70 @@ export default async function AdminPostsPage() {
 
   return (
     <div className="space-y-8">
-      <div className="flex justify-between items-center">
-        <div>
-          <h1 className="text-3xl font-bold">Blog Posts</h1>
-          <p className="text-muted-foreground">Manage your blog content</p>
+      {/* Hero Section */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-yellow-500 to-yellow-600 text-white rounded-2xl p-8 shadow-lg">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-red-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-yellow-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 translate-y-1/2 -translate-x-1/2" />
+        
+        <div className="relative flex justify-between items-center">
+          <div>
+            <h1 className="text-3xl md:text-4xl font-bold mb-2">Postingan Berita</h1>
+            <p className="text-yellow-100">Kelola Konten Berita</p>
+          </div>
+          <Button asChild className="bg-white text-red-600 hover:bg-gray-100 shadow-md">
+            <Link href="/admin/posts/new">
+              <Plus className="mr-2 h-4 w-4" />
+              Postingan Baru
+            </Link>
+          </Button>
         </div>
-        <Button asChild>
-          <Link href="/admin/posts/new">
-            <Plus className="mr-2 h-4 w-4" />
-            New Post
-          </Link>
-        </Button>
       </div>
 
       {posts.length > 0 ? (
         <div className="space-y-4">
           {posts.map((post) => (
-            <Card key={post.id}>
-              <CardHeader>
+            <Card key={post.id} className="hover:shadow-lg transition-shadow border-l-4 border-l-yellow-500">
+              <CardHeader className="bg-gradient-to-r from-yellow-50/50 to-red-50/50">
                 <div className="flex justify-between items-start">
-                  <div className="space-y-2">
-                    <CardTitle className="text-xl">{post.title}</CardTitle>
-                    <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+                  <div className="space-y-2 flex-1">
+                    <CardTitle className="text-xl text-gray-900 font-bold">{post.title}</CardTitle>
+                    <div className="flex items-center space-x-4 text-sm text-gray-600">
                       <div className="flex items-center space-x-1">
-                        <CalendarDays className="h-4 w-4" />
-                        <span>{new Date(post.createdAt).toLocaleDateString()}</span>
+                        <CalendarDays className="h-4 w-4 text-yellow-600" />
+                        <span>{new Date(post.createdAt).toLocaleDateString('id-ID', { 
+                          day: 'numeric', 
+                          month: 'long', 
+                          year: 'numeric' 
+                        })}</span>
                       </div>
-                      <Badge variant={post.published ? "default" : "secondary"}>
-                        {post.published ? "Published" : "Draft"}
+                      <Badge 
+                        variant={post.published ? "default" : "secondary"}
+                        className={post.published 
+                          ? "bg-green-500 hover:bg-green-600 text-white" 
+                          : "bg-gray-400 hover:bg-gray-500 text-white"
+                        }
+                      >
+                        {post.published ? "Dipublikasikan" : "Draf"}
                       </Badge>
                     </div>
                   </div>
                   <PostActions post={post} />
                 </div>
               </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4">{post.excerpt}</p>
+              <CardContent className="pt-6">
+                <p className="text-gray-600 mb-4 line-clamp-2">{post.excerpt || "Tidak ada ringkasan"}</p>
                 <div className="flex space-x-2">
-                  <Button asChild size="sm" variant="outline">
+                  <Button asChild size="sm" variant="outline" className="border-yellow-500 text-yellow-700 hover:bg-yellow-50">
                     <Link href={`/admin/posts/${post.id}/edit`}>
                       <Edit className="mr-2 h-4 w-4" />
                       Edit
                     </Link>
                   </Button>
                   {post.published && (
-                    <Button asChild size="sm" variant="outline">
-                      <Link href={`/blog/${post.slug}`}>
+                    <Button asChild size="sm" variant="outline" className="border-red-500 text-red-700 hover:bg-red-50">
+                      <Link href={`/berita/${post.slug}`}>
                         <Eye className="mr-2 h-4 w-4" />
-                        View
+                        Lihat
                       </Link>
                     </Button>
                   )}
@@ -83,16 +99,21 @@ export default async function AdminPostsPage() {
           ))}
         </div>
       ) : (
-        <Card>
-          <CardContent className="text-center py-12">
-            <h2 className="text-2xl font-semibold mb-4">No blog posts yet</h2>
-            <p className="text-muted-foreground mb-6">Create your first blog post to get started.</p>
-            <Button asChild>
-              <Link href="/admin/posts/new">
-                <Plus className="mr-2 h-4 w-4" />
-                Create First Post
-              </Link>
-            </Button>
+        <Card className="border-t-4 border-t-yellow-500 shadow-lg">
+          <CardContent className="text-center py-16 bg-gradient-to-br from-yellow-50/50 to-red-50/50">
+            <div className="max-w-md mx-auto">
+              <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Plus className="h-10 w-10 text-yellow-600" />
+              </div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-3">Belum Ada Postingan</h2>
+              <p className="text-gray-600 mb-8">Buat postingan blog pertama Anda untuk memulai berbagi konten.</p>
+              <Button asChild className="bg-gradient-to-r from-yellow-500 to-red-500 hover:from-yellow-600 hover:to-red-600 text-white shadow-lg">
+                <Link href="/admin/posts/new">
+                  <Plus className="mr-2 h-4 w-4" />
+                  Buat Postingan Pertama
+                </Link>
+              </Button>
+            </div>
           </CardContent>
         </Card>
       )}

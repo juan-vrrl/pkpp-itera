@@ -3,8 +3,6 @@
 import Link from "next/link";
 import { ChevronDown, Target } from "lucide-react";
 import { useState, useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const PROGRAMS = [
   {
@@ -64,12 +62,6 @@ export default function ProgramKerja() {
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-      easing: "ease-in-out",
-    });
-  }, []);
 
   const toggleItem = (id: string) => {
     setExpandedItems((prev) =>

@@ -2,8 +2,6 @@
 
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { useEffect } from "react";
 
 const TUGAS_POKOK = [
@@ -66,12 +64,6 @@ const TUGAS_POKOK = [
 export default function TugasPokok() {
 
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-      easing: "ease-in-out",
-    });
-  }, []);
 
   return (
     <div className="w-full">
