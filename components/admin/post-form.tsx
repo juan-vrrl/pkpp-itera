@@ -11,9 +11,9 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Switch } from "@/components/ui/switch"
-import { Alert, AlertDescription } from "@/components/ui/alert"
 import { RichTextEditor } from "@/components/admin/rich-text-editor"
 import { ArrowLeft, Save, Loader2 } from "lucide-react"
+import { toast } from "react-toastify"
 
 interface Post {
   id: string
@@ -34,9 +34,8 @@ export function PostForm({ post }: PostFormProps) {
     slug: post?.slug || "",
     content: post?.content || "",
     excerpt: post?.excerpt || "",
-    published: post?.published || false,
+    published: post?.published ?? true,
   })
-  const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 
@@ -60,7 +59,6 @@ export function PostForm({ post }: PostFormProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setError("")
     setIsLoading(true)
 
     try {
@@ -78,13 +76,14 @@ export function PostForm({ post }: PostFormProps) {
       const data = await response.json()
 
       if (response.ok) {
+        toast.success(post ? "Postingan berhasil diperbarui" : "Postingan baru berhasil dibuat")
         router.push("/admin/posts")
         router.refresh()
       } else {
-        setError(data.error || "Failed to save post")
+        toast.error(data.error || "Gagal menyimpan postingan")
       }
-    } catch {
-      setError("An error occurred. Please try again.")
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Terjadi kesalahan. Silakan coba lagi.")
     } finally {
       setIsLoading(false)
     }
@@ -110,25 +109,19 @@ export function PostForm({ post }: PostFormProps) {
         <Button asChild variant="ghost" size="sm">
           <Link href="/admin/posts">
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Posts
+            Kembali ke Daftar Berita
           </Link>
         </Button>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        {error && (
-          <Alert variant="destructive">
-            <AlertDescription>{error}</AlertDescription>
-          </Alert>
-        )}
-
         <Card>
           <CardHeader>
-            <CardTitle>Post Details</CardTitle>
+            <CardTitle>Detail Berita</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <Label htmlFor="title">Title *</Label>
+              <Label htmlFor="title">Judul *</Label>
               <Input
                 id="title"
                 name="title"
@@ -140,15 +133,15 @@ export function PostForm({ post }: PostFormProps) {
             </div>
 
             <div>
-              <Label htmlFor="slug">Slug *</Label>
+              <Label htmlFor="slug">Judul Singkat *</Label>
               <Input id="slug" name="slug" value={formData.slug} onChange={handleChange} required className="mt-1" />
               <p className="text-sm text-muted-foreground mt-1">
-                URL-friendly version of the title. Used in the post URL.
+                Judul singkat digunakan dalam URL berita. Hanya huruf kecil, angka, dan disarankan menggunakan tanda hubung (-) untuk spasi. Contoh : &quot;judul-berita-saya&quot;.
               </p>
             </div>
 
             <div>
-              <Label htmlFor="excerpt">Excerpt</Label>
+              <Label htmlFor="excerpt">Ringkasan</Label>
               <Textarea
                 id="excerpt"
                 name="excerpt"
@@ -158,7 +151,7 @@ export function PostForm({ post }: PostFormProps) {
                 className="mt-1"
               />
               <p className="text-sm text-muted-foreground mt-1">
-                Brief description shown in post listings. Leave empty to auto-generate.
+                Ringkasan singkat yang ditampilkan dalam daftar berita. Biarkan kosong untuk menghasilkan secara otomatis.
               </p>
             </div>
           </CardContent>
@@ -166,20 +159,20 @@ export function PostForm({ post }: PostFormProps) {
 
         <Card>
           <CardHeader>
-            <CardTitle>Content</CardTitle>
+            <CardTitle>Konten</CardTitle>
           </CardHeader>
           <CardContent>
             <div>
-              <Label htmlFor="content">Post Content *</Label>
+              <Label htmlFor="content">Konten Berita *</Label>
               <div className="mt-1">
                 <RichTextEditor
                   content={formData.content}
                   onChange={handleContentChange}
-                  placeholder="Write your post content here..."
+                  placeholder="Tulis konten berita Anda di sini..."
                 />
               </div>
               <p className="text-sm text-muted-foreground mt-1">
-                Use the toolbar above to format your content with headings, lists, links, and more.
+                Gunakan toolbar di atas untuk memformat konten Anda dengan judul, daftar, tautan, dan lainnya.
               </p>
             </div>
           </CardContent>
@@ -196,10 +189,10 @@ export function PostForm({ post }: PostFormProps) {
                 checked={formData.published}
                 onCheckedChange={(checked) => setFormData({ ...formData, published: checked })}
               />
-              <Label htmlFor="published">Publish immediately</Label>
+              <Label htmlFor="published">Publikasikan segera</Label>
             </div>
             <p className="text-sm text-muted-foreground mt-1">
-              Published posts will be visible on the blog. Drafts are only visible to admins.
+              Jika diaktifkan, berita akan langsung dipublikasikan dan terlihat oleh pengunjung situs web.
             </p>
           </CardContent>
         </Card>

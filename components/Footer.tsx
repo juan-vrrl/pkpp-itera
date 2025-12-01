@@ -46,19 +46,28 @@ export function Footer() {
             <div>
               <h4 className="font-semibold mb-4">Contact Us</h4>
               <div className="space-y-2 text-primary">
-                <p>Gedung Training Center (TC)</p>
-                <p>Institut Teknologi Sumatera</p>
-                <p>Jln Terusan Ryacudu</p>
-                <p>Lampung Selatan, Indonesia</p>
+                <p>Jln Terusan Ryacudu Way Hui,</p>
+                <p>Kecamatan Jati Agung,</p>
+                <p>Lampung Selatan 35365</p>
               </div>
-              <div className="text-primary mt-4">
-                <p>
-                  <span className="font-semibold">Phone</span> : (0721) 8030188
+              <div className="text-primary mt-4 space-y-2">
+                <p className="flex gap-2">
+                  <span className="font-semibold whitespace-nowrap">
+                    Phone :
+                  </span>
+                  <span>(0721) 8030188</span>
                 </p>
-                <p>
-                  <span className="font-semibold">Email</span> :
-                  pkpp@itera.ac.id
-                </p>
+                <div className="flex gap-2 items-start">
+                  <span className="font-semibold whitespace-nowrap">
+                    Email :
+                  </span>
+                  <a 
+                    href="mailto:pusatkurikulum@itera.ac.id"
+                    className="break-words hover:text-red-400 transition-colors"
+                  >
+                    pusatkurikulum@itera.ac.id
+                  </a>
+                </div>
               </div>
             </div>
           </div>

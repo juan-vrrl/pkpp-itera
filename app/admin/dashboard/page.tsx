@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { FileText, Plus, Eye, MessageSquare, Mail } from "lucide-react";
+import { FileText, Plus, Eye, Calendar} from "lucide-react";
 
 export default async function AdminDashboardPage() {
   const user = await getSession();
@@ -13,20 +13,18 @@ export default async function AdminDashboardPage() {
     redirect("/admin/login");
   }
 
-  const [totalPosts, publishedPosts, totalMessages, unreadMessages] =
+  const [totalPosts, publishedPosts, totalPrograms] =
     await Promise.all([
       prisma.post.count(),
       prisma.post.count({ where: { published: true } }),
-      prisma.contact.count(),
-      prisma.contact.count({ where: { isRead: false } }),
+      prisma.program.count(),
     ]);
 
   const stats = {
     totalPosts,
     publishedPosts,
     draftPosts: totalPosts - publishedPosts,
-    totalMessages,
-    unreadMessages,
+    totalPrograms,
   };
 
   return (
@@ -45,7 +43,7 @@ export default async function AdminDashboardPage() {
       </div>
 
       {/* Stats Cards */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         <Card className="border-l-4 border-l-yellow-500 hover:shadow-lg transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-gray-700">
@@ -100,34 +98,17 @@ export default async function AdminDashboardPage() {
         <Card className="border-l-4 border-l-purple-500 hover:shadow-lg transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-gray-700">
-              Total Pesan
+              Total Program
             </CardTitle>
             <div className="p-2 bg-purple-100 rounded-lg">
-              <MessageSquare className="h-4 w-4 text-purple-600" />
+              <Calendar className="h-4 w-4 text-purple-600" />
             </div>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-gray-900">
-              {stats.totalMessages}
+              {stats.totalPrograms}
             </div>
-            <p className="text-xs text-gray-500 mt-1">Semua pesan masuk</p>
-          </CardContent>
-        </Card>
-
-        <Card className="border-l-4 border-l-red-500 hover:shadow-lg transition-shadow">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-gray-700">
-              Pesan Belum Dibaca
-            </CardTitle>
-            <div className="p-2 bg-red-100 rounded-lg">
-              <Mail className="h-4 w-4 text-red-600" />
-            </div>
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl font-bold text-red-600">
-              {stats.unreadMessages}
-            </div>
-            <p className="text-xs text-gray-500 mt-1">Perlu perhatian</p>
+            <p className="text-xs text-gray-500 mt-1">Semua program kerja</p>
           </CardContent>
         </Card>
       </div>
@@ -170,19 +151,14 @@ export default async function AdminDashboardPage() {
             <Button
               asChild
               variant="outline"
-              className="h-auto py-4 border-2 border-red-500 text-red-700 hover:bg-red-50 relative"
+              className="h-auto py-4 border-2 border-purple-500 text-purple-700 hover:bg-purple-50"
             >
               <Link
-                href="/admin/messages"
+                href="/admin/programs"
                 className="flex flex-col items-center gap-2"
               >
-                <MessageSquare className="h-6 w-6" />
-                <span className="font-semibold">Lihat Pesan</span>
-                {stats.unreadMessages > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs px-2 py-1 rounded-full font-bold">
-                    {stats.unreadMessages}
-                  </span>
-                )}
+                <Calendar className="h-6 w-6" />
+                <span className="font-semibold">Kelola Program</span>
               </Link>
             </Button>
             <Button

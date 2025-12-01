@@ -81,36 +81,24 @@ export default function StrukturOrganisasi() {
           </div>
         </div>
 
-        {/* Structure Description */}
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <div
-            className="bg-white rounded-lg border border-gray-200 p-6 hover:border-red-300 hover:shadow-lg transition-all"
-            data-aos="fade-left"
-          >
-            <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-              <div className="w-1 h-6 bg-yellow-500 rounded-full"></div>
-              Garis Komando
+        {/* CTA Section */}
+        <div className="mt-16" data-aos="fade-up">
+          <div className="bg-gradient-to-br from-yellow-50 via-red-50 to-orange-50 rounded-lg border-2 border-red-200 p-8 text-center">
+            <h3 className="text-2xl font-bold text-gray-900 mb-3">
+              Lihat Tugas Pokok Kami
             </h3>
-            <p className="text-gray-600 leading-relaxed">
-              Garis komando (garis solid) menunjukkan hubungan hierarki langsung
-              antara atasan dan bawahan, di mana perintah dan tanggung jawab
-              mengalir dari atas ke bawah secara vertikal.
+            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+              Pelajari lebih lanjut tentang tugas dan tanggung jawab setiap bagian dalam organisasi PKPP
             </p>
-          </div>
-
-          <div
-            className="bg-white rounded-lg border border-gray-200 p-6 hover:border-red-300 hover:shadow-lg transition-all"
-            data-aos="fade-right"
-          >
-            <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-              <div className="w-1 h-6 bg-red-600 rounded-full"></div>
-              Garis Koordinasi
-            </h3>
-            <p className="text-gray-600 leading-relaxed">
-              Garis koordinasi (garis putus-putus) menunjukkan hubungan
-              kolaboratif dan komunikasi horizontal antara unit-unit organisasi
-              yang setara untuk saling mendukung pencapaian tujuan.
-            </p>
+            <Link
+              href="/tugas-pokok"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500 to-red-600 hover:from-yellow-600 hover:to-red-700 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
+            >
+              Tugas Pokok
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </Link>
           </div>
         </div>
       </div>

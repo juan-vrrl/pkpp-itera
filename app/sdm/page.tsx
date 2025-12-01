@@ -25,92 +25,110 @@ const departments: Department[] = [
     staff: [
       {
         id: "1",
-        name: "Dosen Pembimbing Akademik A",
-        position: "Kepala Pusat",
+        name: "Dr. Nono Agus Santoso, S.Si., M.T",
+        position: "Kepala Pusat Kurikulum dan Pengembangan Pembelajaran",
         photo: "/professional-male.jpg",
-      },
-      {
-        id: "2",
-        name: "Jasminartikel, S.Sos., M.T.",
-        position: "Wakil Kepala Pusat",
-        photo: "/professional-female.png",
-      },
-      {
-        id: "3",
-        name: "Maria Helvina Driyasa Sarletta, S.T., M.Sc.",
-        position: "Wakil Kepala Pusat",
-        photo: "/professional-female-hijab.jpg",
       },
     ],
   },
   {
-    id: "bidang",
-    name: "Bidang",
+    id: "kurikulum",
+    name: "Kurikulum",
     staff: [
       {
+        id: "2",
+        name: "Rifka Noor Azizah, M.T.",
+        position: "Koordinator Divisi Kurikulum",
+        photo: "/professional-teamwork.png",
+      },
+      {
+        id: "3",
+        name: "Rizki Wulandari, S.T., M.Sc.",
+        position: "Anggota Divisi Kurikulum",
+        photo: "/professional-teamwork.png",
+      },
+            {
         id: "4",
-        name: "Dosen Pembimbing Akademik B",
-        position: "Kepala Bidang",
+        name: "Endo Pebri Dani Putra, S.TP., M.P.",
+        position: "Anggota Divisi Kurikulum",
         photo: "/professional-teamwork.png",
       },
       {
         id: "5",
-        name: "Staff Member 1",
-        position: "Staff",
+        name: "Hersa Dwi Yanuarso, S.TP., M.P.",
+        position: "Anggota Divisi Kurikulum",
         photo: "/professional-teamwork.png",
       },
-    ],
-  },
-  {
-    id: "adir",
-    name: "ADIR",
-    staff: [
       {
         id: "6",
-        name: "Administrator 1",
-        position: "Kepala ADIR",
+        name: "Nova Asriana Ms. S.T., M.T",
+        position: "Anggota Divisi Kurikulum",
         photo: "/professional-teamwork.png",
       },
       {
         id: "7",
-        name: "Staff Member 2",
-        position: "Staff",
+        name: "Dr. Erma Suryanti, M.Si.",
+        position: "Anggota Divisi Kurikulum",
         photo: "/professional-teamwork.png",
       },
-    ],
-  },
-  {
-    id: "balai",
-    name: "Balai",
-    staff: [
       {
         id: "8",
-        name: "Balai Manager",
-        position: "Kepala Balai",
+        name: "Suci Wulandari, S.T., M.T.",
+        position: "Anggota Divisi Kurikulum",
         photo: "/professional-teamwork.png",
-      },
-      {
-        id: "9",
-        name: "Staff Member 3",
-        position: "Staff",
-        photo: "/professional-teamwork.png",
-      },
+      }
     ],
   },
   {
-    id: "admin",
-    name: "ADMIN",
+    id: "pengembangan-pembelajaran",
+    name: "Pengembangan Pembelajaran",
     staff: [
       {
+        id: "9",
+        name: "Fuji Lestari, M.Si.",
+        position: "Koordinator Divisi Pengembangan Pembelajaran",
+        photo: "/professional-teamwork.png",
+      },
+      {
         id: "10",
-        name: "Admin Manager",
-        position: "Kepala Admin",
+        name: "Alfiah Rizky Diana Putri, M.Eng.",
+        position: "Anggota Divisi Pengembangan Pembelajaran",
         photo: "/professional-teamwork.png",
       },
       {
         id: "11",
-        name: "Staff Member 4",
-        position: "Staff",
+        name: "Putri Ayu Dwiyana, S.Pd., M.T.",
+        position: "Anggota Divisi Pengembangan Pembelajaran",
+        photo: "/professional-teamwork.png",
+      },
+      {
+        id: "12",
+        name: "Hediyati Anisia Br Sinamo, S.P.W.K., M.P.W.K.",
+        position: "Anggota Divisi Pengembangan Pembelajaran",
+        photo: "/professional-teamwork.png",
+      },
+      {
+        id: "13",
+        name: "Dr. Sn. Namuri Migo Tuwio, S.Sn., M.Sn.",
+        position: "Anggota Divisi Pengembangan Pembelajaran",
+        photo: "/professional-teamwork.png",
+      },
+      {
+        id: "14",
+        name: "Ira Safitri, M.Si.",
+        position: "Anggota Divisi Pengembangan Pembelajaran",
+        photo: "/professional-teamwork.png",
+      },
+      {
+        id: "15",
+        name: "apt. Winni Nur Auli, S.Farm., M.S.Farm.",
+        position: "Anggota Divisi Pengembangan Pembelajaran",
+        photo: "/professional-teamwork.png",
+      },
+      {
+        id: "16",
+        name: "Efa Maydhona Saputra, S.T., M.T.",
+        position: "Anggota Divisi Pengembangan Pembelajaran",
         photo: "/professional-teamwork.png",
       },
     ],
@@ -266,7 +284,7 @@ export default function SDM() {
 
         {/* Departments Accordion Section */}
         <div className="space-y-4" data-aos="fade-up" data-aos-delay="200">
-          <h3 className="text-2xl font-bold text-gray-900 mb-6">Departemen</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-6">Divisi </h3>
           {departments.slice(1).map((department) => (
             <DepartmentAccordion key={department.id} department={department} />
           ))}

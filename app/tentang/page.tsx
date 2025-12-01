@@ -61,10 +61,16 @@ export default function TentangPage() {
                 Pusat Kurikulum Dan Pengembangan Pembelajaran
               </h2>
               <p className="text-gray-700 leading-relaxed">
-                Pusat Kurikulum dan Pengembangan Pembelajaran (PKPP) merupakan
-                salah satu pusat yang berada di bawah Lembaga Penjaminan Mutu
-                dan Pengembangan Pembelajaran Institut Teknologi Sumatera
-                (LPMPP)
+                Pusat Kurikulum dan Pengembangan Pembelajaran (PKPP) Itera
+                adalah Pusat di bawah Lembaga Penjaminan Mutu dan Pengembangan
+                Pembelajaran (LPMPP) Institut Teknologi Sumatera yang
+                bertanggung jawab untuk mengembangkan, mengelola, dan
+                mengevaluasi kurikulum universitas serta berbagai kegiatan
+                pembelajaran. Pusat Kurikulum dan Pengembangan Pembelajaran
+                berperan penting dalam merumuskan kurikulum baru berbasis
+                teknologi seperti AI, mengadopsi standar internasional, dan
+                menjajaki kerja sama dengan perguruan tinggi lain untuk
+                meningkatkan mutu pendidikan.
               </p>
             </div>
 
@@ -86,7 +92,7 @@ export default function TentangPage() {
         </div>
 
         {/* Documents Section */}
-        <div className="mb-16" data-aos="zoom-in-up">
+        {/* <div className="mb-16" data-aos="zoom-in-up">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 flex items-center gap-3">
             <FileText className="w-8 h-8 text-red-600" />
             Dokumen Resmi
@@ -123,7 +129,7 @@ export default function TentangPage() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* CTA Section */}
         <div

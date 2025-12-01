@@ -18,6 +18,9 @@ const dropdownMenus = {
     { name: "SDM", href: "/sdm" },
     { name: "Program Kerja", href: "/program-kerja" },
   ],
+  informasi: [
+    { name: "Pedoman Pertor", href: "https://bit.ly/PedomandanPertorItera" },
+  ] 
 } as const
 
 type DropdownKey = keyof typeof dropdownMenus
@@ -28,6 +31,7 @@ const navigation: Array<
 > = [
   { name: "Beranda", href: "/" },
   { name: "Profil", dropdownItems: "profile" },
+  { name: "Informasi", dropdownItems: "informasi" },
   { name: "Berita", href: "/berita" },
   { name: "Kontak", href: "#kontak" },
 ]

@@ -5,7 +5,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useToast } from "@/hooks/use-toast"
+import { toast } from "react-toastify"
 import { cn } from "@/lib/utils"
 
 interface FormErrors {
@@ -23,8 +23,6 @@ export function AdminPasswordForm() {
     newPassword: "",
     confirmPassword: "",
   })
-  const { toast } = useToast()
-
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {}
 
@@ -79,10 +77,7 @@ export function AdminPasswordForm() {
         return
       }
 
-      toast({
-        title: "Password changed",
-        description: "Your password has been changed successfully.",
-      })
+      toast.success("Password berhasil diubah")
 
       setFormData({
         currentPassword: "",

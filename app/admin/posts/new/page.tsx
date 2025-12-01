@@ -12,8 +12,8 @@ export default async function NewPostPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold">Create New Post</h1>
-        <p className="text-muted-foreground">Write and publish a new blog post</p>
+        <h1 className="text-3xl font-bold">Buat Berita Baru</h1>
+        <p className="text-muted-foreground">Tulis dan publikasikan berita baru</p>
       </div>
 
       <PostForm />

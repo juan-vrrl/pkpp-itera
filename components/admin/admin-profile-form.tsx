@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useToast } from "@/hooks/use-toast"
+import { toast } from "react-toastify"
 import type { User } from "@/lib/auth"
 
 interface AdminProfileFormProps {
@@ -29,7 +29,6 @@ export function AdminProfileForm({ user }: AdminProfileFormProps) {
     email: user.email,
   })
   const router = useRouter()
-  const { toast } = useToast()
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {}
@@ -76,10 +75,7 @@ export function AdminProfileForm({ user }: AdminProfileFormProps) {
         return
       }
 
-      toast({
-        title: "Profile updated",
-        description: "Your profile has been updated successfully.",
-      })
+      toast.success("Profil berhasil diupdate")
 
       router.refresh()
     } catch {

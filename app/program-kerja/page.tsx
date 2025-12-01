@@ -1,71 +1,19 @@
-"use client";
-
 import Link from "next/link";
-import { ChevronDown, Target } from "lucide-react";
-import { useState } from "react";
+import { Calendar, Target } from "lucide-react";
+import { prisma } from "@/lib/prisma";
+import { format } from "date-fns";
+import { id } from "date-fns/locale";
 
-const PROGRAMS = [
-  {
-    id: "A",
-    category: "Management Programs PKPP",
-    icon: Target,
-    color: "bg-blue-100 text-blue-600",
-    items: [
-      "Laporan Mingguan PKPP kepada Pimpinan Institusi (Rektor Pimpinan Akademik)",
-      "Rapat Bulanan bersama tim internal PKPP untuk Perencanaan, Pelaksanaan, Evaluasi, Pengembangan, dan Perencanaan Program PKPP",
-      "Rapat Koordinasi Bersama GFMF selama dua bulan sekali",
-      "Rapat Triwulan Manajemen tingkat Unit dan Institusi",
-    ],
-  },
-  {
-    id: "B",
-    category: "Sistem Pengamanan Mutu Interaksi",
-    icon: Target,
-    color: "bg-purple-100 text-purple-600",
-    items: [
-      "Revisi Dokumen SPM Institusi Teknologi Sumatera",
-      "Pengembangan dan Evaluasi Sistem dokumen SPM",
-      "Audit Internal SPM bersama Tim Internal Jaminan Mutu Institusi",
-      "Peningkatan Implementasi SPM pada GSMF dan Jaminan Mutu PAMP",
-      "Pelatihan Gayer Manajemen dan indikator untuk data akademik ITEA dan Pengguna Institusi",
-      "Koordinasi Forum Manajemen Mutu Institusi",
-      "Workshop Penyusunan Laporan ITDA",
-    ],
-  },
-  {
-    id: "C",
-    category: "Sistem Pengamanan Mutu Eksternal",
-    icon: Target,
-    color: "bg-green-100 text-green-600",
-    items: [
-      "Pengembangan Kerangka Manajemen Mutu Internal, Eksternal, Simulasi dan Visikasi Akreditasi Program Studi Penuh",
-      "Pelatihan Penulisan Borang Akreditasi",
-      "Pendampingan Penulisan Borang LED LAPS akreditasi diri pidah akreditasi",
-      "Tim Persiapan diri penyusunan akreditasi PTs Institusi",
-      "Persiapan ITEFIS dari program studi ditunjuk ke arah berdas Instruktur BAN PT",
-    ],
-  },
-  {
-    id: "D",
-    category: "Audit Mutu Internal",
-    icon: Target,
-    color: "bg-orange-100 text-orange-600",
-    items: [
-      "Perencanaan dan Penyusunan Dokumen daftar IDA AMI",
-      "Konsultasi AMI",
-      "Koordinasi Follow Up Program dan Visi/Misi AMI",
-    ],
-  },
-];
+async function getPrograms() {
+  return await prisma.program.findMany({
+    orderBy: {
+      dateStart: "asc",
+    },
+  });
+}
 
-export default function ProgramKerja() {
-  const [expandedItems, setExpandedItems] = useState<string[]>([]);
-
-  const toggleItem = (id: string) => {
-    setExpandedItems((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
-    );
-  };
+export default async function ProgramKerja() {
+  const programs = await getPrograms();
 
   return (
     <div className="w-full">
@@ -117,7 +65,7 @@ export default function ProgramKerja() {
           data-aos="fade-right"
         >
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Program Kerja PKPP :{" "}
+            Program Kerja PKPP
           </h2>
           <p className="text-gray-700 leading-relaxed">
             Berikut adalah daftar lengkap program kerja yang akan dilaksanakan
@@ -126,103 +74,129 @@ export default function ProgramKerja() {
           </p>
         </div>
 
-        {/* Programs Timeline */}
-        <div className="space-y-6">
-          {PROGRAMS.map((program, index) => {
-            const Icon = program.icon;
-            const isExpanded = expandedItems.includes(program.id);
+        {/* Programs Grid */}
+        {programs.length === 0 ? (
+          <div className="text-center py-12">
+            <Target className="w-16 h-16 mx-auto text-gray-300 mb-4" />
+            <p className="text-gray-500 text-lg">
+              Belum ada program kerja yang tersedia.
+            </p>
+          </div>
+        ) : (
+          <div className="grid gap-6">
+            {programs.map((program, index) => {
+              const isActive = new Date(program.dateEnd) >= new Date();
+              const isSameDay =
+                format(new Date(program.dateStart), "yyyy-MM-dd") ===
+                format(new Date(program.dateEnd), "yyyy-MM-dd");
 
-            return (
-              <div
-                key={program.id}
-                data-aos="fade-up"
-                data-aos-delay={`${index * 100}`}
-              >
-                {/* Program Header */}
+              return (
                 <div
-                  className="flex items-start gap-4 p-6 bg-white rounded-t-lg border border-gray-200 cursor-pointer hover:border-red-300 transition-all group"
-                  onClick={() => toggleItem(program.id)}
+                  key={program.id}
+                  data-aos="fade-up"
+                  data-aos-delay={`${index * 50}`}
+                  className="bg-white rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-lg transition-all group overflow-hidden"
                 >
                   {/* Left Accent Bar */}
-                  <div className="w-1 h-full bg-gradient-to-b from-red-500 to-yellow-500 rounded-full min-h-16"></div>
-
-                  {/* Icon */}
-                  <div
-                    className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 ${program.color}`}
-                  >
-                    <Icon className="w-6 h-6" />
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1">
-                    <div className="flex items-start justify-between">
-                      <div>
-                        <h3 className="text-lg font-bold text-gray-900 mb-2">
-                          <span className="inline-block w-8 h-8 rounded bg-red-100 text-red-600 font-bold text-center mr-3">
-                            {program.id}
-                          </span>
-                          {program.category}
-                        </h3>
-                        <p className="text-sm text-gray-600">
-                          {program.items.length} kegiatan
-                        </p>
+                  <div className="flex">
+                    <div
+                      className={`w-2 ${
+                        isActive
+                          ? "bg-gradient-to-b from-green-500 to-green-600"
+                          : "bg-gradient-to-b from-gray-400 to-gray-500"
+                      }`}
+                    ></div>
+                    <div className="flex-1 p-6">
+                      {/* Header with Date Badge */}
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="flex items-center gap-3">
+                          <div
+                            className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                              isActive
+                                ? "bg-green-100 text-green-600"
+                                : "bg-gray-100 text-gray-600"
+                            }`}
+                          >
+                            <Calendar className="w-6 h-6" />
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-2 mb-1">
+                              <span
+                                className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                                  isActive
+                                    ? "bg-green-100 text-green-700"
+                                    : "bg-gray-100 text-gray-700"
+                                }`}
+                              >
+                                {isActive ? "Aktif" : "Selesai"}
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-2 text-sm text-gray-600">
+                              <Calendar className="w-4 h-4" />
+                              <span>
+                                {isSameDay
+                                  ? format(
+                                      new Date(program.dateStart),
+                                      "dd MMMM yyyy",
+                                      { locale: id }
+                                    )
+                                  : `${format(
+                                      new Date(program.dateStart),
+                                      "dd MMMM yyyy",
+                                      { locale: id }
+                                    )} - ${format(
+                                      new Date(program.dateEnd),
+                                      "dd MMMM yyyy",
+                                      { locale: id }
+                                    )}`}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <ChevronDown
-                        className={`w-5 h-5 text-gray-600 transition-transform duration-300 flex-shrink-0 mt-1 ${
-                          isExpanded ? "rotate-180" : ""
-                        }`}
-                      />
+
+                      {/* Activity Description */}
+                      <div className="mt-4">
+                        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors">
+                          {program.activity}
+                        </h3>
+                      </div>
                     </div>
                   </div>
                 </div>
-
-                <div
-                  className={`overflow-hidden transition-[max-height] duration-500 ease-in-out ${
-                    isExpanded ? "max-h-[1000px]" : "max-h-0"
-                  }`}
-                >
-                  <div className="bg-gradient-to-b from-gray-50 to-white border border-t-0 border-gray-200 rounded-b-lg p-6">
-                    <ol className="space-y-3">
-                      {program.items.map((item, itemIndex) => (
-                        <li key={itemIndex} className="flex gap-4">
-                          <span className="text-red-600 font-semibold flex-shrink-0 w-6">
-                            {itemIndex + 1}.
-                          </span>
-                          <span className="text-gray-700 leading-relaxed">
-                            {item}
-                          </span>
-                        </li>
-                      ))}
-                    </ol>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        )}
 
         {/* Summary Stats */}
-        <div className="mt-16 grid md:grid-cols-2 gap-6">
-          <div
-            className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 border border-blue-200"
-            data-aos="fade-up"
-          >
-            <div className="text-3xl font-bold text-blue-600 mb-2">
-              {PROGRAMS.length}
+        {programs.length > 0 && (
+          <div className="mt-16 grid md:grid-cols-2 gap-6">
+            <div
+              className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 border border-blue-200"
+              data-aos="fade-up"
+            >
+              <div className="text-3xl font-bold text-blue-600 mb-2">
+                {programs.length}
+              </div>
+              <p className="text-blue-900 font-medium">Total Program</p>
             </div>
-            <p className="text-blue-900 font-medium">Kategori Program</p>
-          </div>
-          <div
-            className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-6 border border-purple-200"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            <div className="text-3xl font-bold text-purple-600 mb-2">
-              {PROGRAMS.reduce((acc, p) => acc + p.items.length, 0)}
+            <div
+              className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 border border-green-200"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div className="text-3xl font-bold text-green-600 mb-2">
+                {
+                  programs.filter(
+                    (p) => new Date(p.dateEnd) >= new Date()
+                  ).length
+                }
+              </div>
+              <p className="text-green-900 font-medium">Program Aktif</p>
             </div>
-            <p className="text-purple-900 font-medium">Total Kegiatan</p>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

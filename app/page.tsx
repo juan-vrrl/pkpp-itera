@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Building2, School, MapPin, Phone, Mail, Clock } from "lucide-react";
+import { Building2, School, MapPin, Phone, Mail, Clock, Target, CheckCircle, Calendar } from "lucide-react";
 import {
   AnimatedSection,
   AnimatedCard,
@@ -52,7 +52,8 @@ export default function HomePage() {
             >
               <div className="w-2 h-2 bg-orange-500 rounded-full" />
               <span className="text-sm font-semibold text-orange-600 tracking-wider uppercase">
-                Selamat Datang
+                Selamat datang di Website Pusat Kurikulum Institut Teknologi
+                Sumatera
               </span>
             </div>
 
@@ -66,11 +67,14 @@ export default function HomePage() {
             </div>
 
             <p
-              className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed text-balance font-semibold"
+              className="text-md md:text-xl text-gray-700 mb-8 leading-relaxed text-balance font-semibold"
               data-aos="fade-up"
               data-aos-delay="400"
             >
-              Pusat Kurikulum Dan Pengembangan Pembelajaran
+              Sebagai pusat pengembangan akademik, kami berupaya merancang
+              kurikulum inovatif yang mendorong terciptanya lulusan unggul,
+              berdaya saing, dan siap menghadapi tantangan global. Mari bersama
+              membangun masa depan pendidikan yang lebih baik.
             </p>
           </div>
         </div>
@@ -83,15 +87,22 @@ export default function HomePage() {
               Tentang
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-balance">
-              Pusat Kurikulum dan Pengembangan Pembelajaran (PKPP) merupakan
-              salah satu pusat yang berada di bawah Lembaga Penjaminan Mutu dan
-              Pengembangan Pembelajaran Institut Teknologi Sumatera (LPMPP) yang
-              bertanggung jawab dalam pengelolaan kurikulum dan inovasi
-              pembelajaran guna meningkatkan kualitas pendidikan.
+              Pusat Kurikulum dan Pengembangan Pembelajaran (PKPP) Itera adalah
+              Pusat di bawah Lembaga Penjaminan Mutu dan Pengembangan
+              Pembelajaran (LPMPP) Institut Teknologi Sumatera yang bertanggung
+              jawab untuk mengembangkan, mengelola, dan mengevaluasi kurikulum
+              universitas serta berbagai kegiatan pembelajaran. Pusat Kurikulum
+              dan Pengembangan Pembelajaran berperan penting dalam merumuskan
+              kurikulum baru berbasis teknologi seperti AI, mengadopsi standar
+              internasional, dan menjajaki kerja sama dengan perguruan tinggi
+              lain untuk meningkatkan mutu pendidikan.
             </p>
           </AnimatedSection>
 
-          <AnimatedSection stagger className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <AnimatedSection
+            stagger
+            className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+          >
             <AnimatedCard className="group h-full">
               <Card className="text-center p-8 hover:shadow-lg transition-shadow h-full flex flex-col">
                 <CardContent className="pt-6 flex-1 flex flex-col">
@@ -120,6 +131,111 @@ export default function HomePage() {
                 </CardContent>
               </Card>
             </AnimatedCard>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Quick Access Section */}
+      <section className="py-24 bg-gradient-to-br from-yellow-50 via-orange-50 to-red-50">
+        <div className="container mx-auto px-4">
+          <AnimatedSection className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <span className="text-red-500">—</span> Profil PKPP{" "}
+              <span className="text-red-500">—</span>
+            </h2>
+            <p className="text-lg text-muted-foreground text-balance">
+              Akses cepat ke informasi profil dan program kerja PKPP ITERA
+            </p>
+          </AnimatedSection>
+
+          <AnimatedSection
+            stagger
+            className="max-w-5xl mx-auto"
+          >
+            {/* Mobile: Single Column, Desktop: Offset Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* Top Row - Shifted Left on Desktop */}
+              <div className="lg:pr-8">
+                <AnimatedCard>
+                  <a href="/tentang" className="block group h-full">
+                    <Card className="hover:shadow-xl transition-all border-2 hover:border-red-300 hover:-translate-y-1 h-full">
+                      <CardContent className="p-6 text-center h-full flex flex-col">
+                        <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:from-blue-500 group-hover:to-blue-600 transition-all">
+                          <Building2 className="h-8 w-8 text-blue-600 group-hover:text-white transition-colors" />
+                        </div>
+                        <h3 className="text-xl font-bold mb-2 group-hover:text-red-600 transition-colors">
+                          Tentang
+                        </h3>
+                        <p className="text-sm text-muted-foreground flex-1">
+                          Informasi lengkap tentang PKPP ITERA
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </a>
+                </AnimatedCard>
+              </div>
+
+              <div className="lg:pl-8">
+                <AnimatedCard>
+                  <a href="/visi-misi" className="block group h-full">
+                    <Card className="hover:shadow-xl transition-all border-2 hover:border-red-300 hover:-translate-y-1 h-full">
+                      <CardContent className="p-6 text-center h-full flex flex-col">
+                        <div className="w-16 h-16 bg-gradient-to-br from-purple-100 to-purple-200 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:from-purple-500 group-hover:to-purple-600 transition-all">
+                          <Target className="h-8 w-8 text-purple-600 group-hover:text-white transition-colors" />
+                        </div>
+                        <h3 className="text-xl font-bold mb-2 group-hover:text-red-600 transition-colors">
+                          Visi & Misi
+                        </h3>
+                        <p className="text-sm text-muted-foreground flex-1">
+                          Visi, misi, dan tujuan PKPP
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </a>
+                </AnimatedCard>
+              </div>
+
+              {/* Bottom Row - Shifted Right on Desktop */}
+              <div className="lg:pr-8">
+                <AnimatedCard>
+                  <a href="/tugas-pokok" className="block group h-full">
+                    <Card className="hover:shadow-xl transition-all border-2 hover:border-red-300 hover:-translate-y-1 h-full">
+                      <CardContent className="p-6 text-center h-full flex flex-col">
+                        <div className="w-16 h-16 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:from-green-500 group-hover:to-green-600 transition-all">
+                          <CheckCircle className="h-8 w-8 text-green-600 group-hover:text-white transition-colors" />
+                        </div>
+                        <h3 className="text-xl font-bold mb-2 group-hover:text-red-600 transition-colors">
+                          Tugas Pokok
+                        </h3>
+                        <p className="text-sm text-muted-foreground flex-1">
+                          Tugas pokok dan fungsi PKPP
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </a>
+                </AnimatedCard>
+              </div>
+
+              <div className="lg:pl-8">
+                <AnimatedCard>
+                  <a href="/program-kerja" className="block group h-full">
+                    <Card className="hover:shadow-xl transition-all border-2 hover:border-red-300 hover:-translate-y-1 h-full">
+                      <CardContent className="p-6 text-center h-full flex flex-col">
+                        <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-orange-200 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:from-orange-500 group-hover:to-orange-600 transition-all">
+                          <Calendar className="h-8 w-8 text-orange-600 group-hover:text-white transition-colors" />
+                        </div>
+                        <h3 className="text-xl font-bold mb-2 group-hover:text-red-600 transition-colors">
+                          Program Kerja
+                        </h3>
+                        <p className="text-sm text-muted-foreground flex-1">
+                          Daftar program kerja PKPP
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </a>
+                </AnimatedCard>
+              </div>
+            </div>
           </AnimatedSection>
         </div>
       </section>
@@ -161,9 +277,8 @@ export default function HomePage() {
                         Address
                       </h3>
                       <p className="text-muted-foreground text-sm">
-                        Jln Terusan Ryacudu
-                        <br />
-                        Lampung Selatan, Indonesia
+                        Jalan Terusan Ryacudu Way Hui, Kecamatan Jati Agung,
+                        Lampung Selatan 35365
                       </p>
                     </div>
                   </div>
@@ -185,8 +300,6 @@ export default function HomePage() {
                       </h3>
                       <p className="text-muted-foreground text-sm">
                         (0721) 8030188
-                        <br />
-                        (0721) 8030189
                       </p>
                     </div>
                   </div>
@@ -207,7 +320,7 @@ export default function HomePage() {
                         Email Us
                       </h3>
                       <p className="text-muted-foreground text-sm">
-                        pkpp@itera.ac.id
+                        pusatkurikulum@itera.ac.id
                       </p>
                     </div>
                   </div>

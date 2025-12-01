@@ -20,7 +20,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
 import { MoreHorizontal, Edit, Trash2, Eye, EyeOff } from "lucide-react"
-import { useToast } from "@/hooks/use-toast"
+import { toast } from "react-toastify"
 
 interface Post {
   id: string
@@ -38,7 +38,6 @@ export function PostActions({ post }: PostActionsProps) {
   const [isDeleting, setIsDeleting] = useState(false)
   const [isToggling, setIsToggling] = useState(false)
   const router = useRouter()
-  const { toast } = useToast()
 
   const handleDelete = async () => {
     setIsDeleting(true)
@@ -52,19 +51,12 @@ export function PostActions({ post }: PostActionsProps) {
         throw new Error(errorData.error || "Failed to delete post")
       }
 
-      toast({
-        title: "Post deleted",
-        description: "The post has been deleted successfully.",
-      })
+      toast.success("Artikel berhasil dihapus")
 
       router.refresh()
       setShowDeleteDialog(false)
     } catch (error) {
-      toast({
-        title: "Error",
-        description: error instanceof Error ? error.message : "Failed to delete post",
-        variant: "destructive",
-      })
+      toast.error(error instanceof Error ? error.message : "Gagal menghapus artikel")
     } finally {
       setIsDeleting(false)
     }
@@ -88,18 +80,11 @@ export function PostActions({ post }: PostActionsProps) {
         throw new Error(errorData.error || "Failed to update post")
       }
 
-      toast({
-        title: post.published ? "Post unpublished" : "Post published",
-        description: `The post has been ${post.published ? "unpublished" : "published"} successfully.`,
-      })
+      toast.success(post.published ? "Artikel berhasil di-unpublish" : "Artikel berhasil dipublish")
 
       router.refresh()
     } catch (error) {
-      toast({
-        title: "Error",
-        description: error instanceof Error ? error.message : "Failed to update post",
-        variant: "destructive",
-      })
+      toast.error(error instanceof Error ? error.message : "Gagal mengupdate artikel")
     } finally {
       setIsToggling(false)
     }

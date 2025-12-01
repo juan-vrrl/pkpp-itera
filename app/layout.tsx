@@ -5,6 +5,7 @@ import { GeistMono } from "geist/font/mono";
 import { ConditionalNavigationClient } from "@/components/ConditionalNavigationClient";
 import { ConditionalFooter } from "@/components/ConditionalFooter";
 import AOSInit from "@/components/AOSInit";
+import ToastProvider from "@/components/ToastProvider";
 import { Suspense } from "react";
 import "./globals.css";
 
@@ -23,6 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         <AOSInit />
+        <ToastProvider />
         <Suspense fallback={<div>Loading...</div>}>
           <ConditionalNavigationClient />
           {children}

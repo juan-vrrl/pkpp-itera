@@ -12,8 +12,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { cn } from "@/lib/utils"
-import { LogOut, Home, FileText, Settings, MessageSquare } from "lucide-react"
-import { useToast } from "@/hooks/use-toast"
+import { LogOut, Home, FileText, Settings, Calendar } from "lucide-react"
+import { toast } from "react-toastify"
 import type { User as UserType } from "@/lib/auth"
 
 interface AdminNavigationProps {
@@ -22,8 +22,8 @@ interface AdminNavigationProps {
 
 const navigation = [
   { name: "Dashboard", href: "/admin/dashboard", icon: Home },
-  { name: "Posts", href: "/admin/posts", icon: FileText },
-  { name: "Pesan", href: "/admin/messages", icon: MessageSquare },
+  { name: "Berita", href: "/admin/posts", icon: FileText },
+  { name: "Program Kerja", href: "/admin/programs", icon: Calendar },
   { name: "Pengaturan", href: "/admin/settings", icon: Settings },
 ]
 
@@ -31,7 +31,6 @@ export function AdminNavigation({ user }: AdminNavigationProps) {
   const [isLoggingOut, setIsLoggingOut] = useState(false)
   const router = useRouter()
   const pathname = usePathname()
-  const { toast } = useToast()
 
   const handleLogout = async () => {
     setIsLoggingOut(true)
@@ -42,19 +41,12 @@ export function AdminNavigation({ user }: AdminNavigationProps) {
         throw new Error("Failed to logout")
       }
 
-      toast({
-        title: "Logged out",
-        description: "You have been logged out successfully.",
-      })
+      toast.success("Berhasil logout")
 
       router.push("/admin/login")
       router.refresh()
     } catch (error) {
-      toast({
-        title: "Error",
-        description: error instanceof Error ? error.message : "Failed to logout",
-        variant: "destructive",
-      })
+      toast.error(error instanceof Error ? error.message : "Gagal logout")
     } finally {
       setIsLoggingOut(false)
     }
@@ -137,9 +129,8 @@ export function AdminNavigation({ user }: AdminNavigationProps) {
         <div className="flex items-center space-x-2 sm:space-x-4">
           <Button
             asChild
-            variant="outline"
             size="sm"
-            className="hidden sm:flex hover:text-red-600 bg-black"
+            className="hidden sm:flex hover:text-yellow-600 bg-gray-800"
           >
             <Link href="/">Lihat Website</Link>
           </Button>

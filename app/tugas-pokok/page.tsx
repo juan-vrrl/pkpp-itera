@@ -6,57 +6,33 @@ import { CheckCircle2 } from "lucide-react";
 const TUGAS_POKOK = [
   {
     id: 1,
-    title: "Pengembangan Kurikulum",
+    title: "Kepala Pusat",
     description:
-      "Merancang dan mengembangkan kurikulum yang inovatif sesuai dengan perkembangan zaman dan kebutuhan industri.",
+      "Kepala Pusat bertugas mengatur dan mengkoordinasikan kegiatan Tim Pusat Kurikulum dan Pengembangan Pembelajaran Institut Teknologi Sumatera.",
   },
   {
     id: 2,
-    title: "Evaluasi Pembelajaran",
+    title: "Anggota Divisi Kurikulum",
     description:
-      "Melakukan evaluasi komprehensif terhadap proses dan hasil pembelajaran untuk memastikan kualitas pendidikan.",
+      "Anggota Divisi Kurikulum bertugas mengkoordinasikan semua kegiatan yang berkaitan dengan kurikulum Institut Teknologi Sumatera",
   },
   {
     id: 3,
-    title: "Inovasi Metode Pembelajaran",
+    title: "Sekretaris Divisi Kurikulum",
     description:
-      "Mengembangkan dan mengimplementasikan metode pembelajaran yang aktif, kreatif, dan efektif.",
+      "Sekretaris Divisi Kurikulum bertugas membantu koordinator dalam mengatur dan mengkoordinasikan kegiatan kurikulum",
   },
   {
     id: 4,
-    title: "Pengembangan Kompetensi Dosen",
+    title: "Koordinator Divisi Pengembangan Pembelajaran",
     description:
-      "Fasilitasi peningkatan kompetensi pedagogis dan profesional para dosen melalui berbagai program pelatihan.",
+      "Koordinator Divisi Pengembangan Pembelajaran bertugas membantu koordinator dalam mengatur dan mengkoordinasikan kegiatan pengembangan pembelajaran",
   },
   {
     id: 5,
-    title: "Penjaminan Mutu Pembelajaran",
+    title: "Anggota Divisi Pengembangan Pembelajaran",
     description:
-      "Menjamin bahwa setiap proses pembelajaran memenuhi standar kualitas yang telah ditetapkan.",
-  },
-  {
-    id: 6,
-    title: "Integrasi Teknologi Pendidikan",
-    description:
-      "Mengintegrasikan teknologi terkini dalam pembelajaran untuk meningkatkan efektivitas dan efisiensi.",
-  },
-  {
-    id: 7,
-    title: "Riset Pembelajaran",
-    description:
-      "Melakukan riset mendalam tentang strategi pembelajaran dan pengaruhnya terhadap hasil belajar mahasiswa.",
-  },
-  {
-    id: 8,
-    title: "Kolaborasi Antar Program Studi",
-    description:
-      "Memfasilitasi kolaborasi lintas program studi untuk memperkuat sinergi pembelajaran.",
-  },
-  {
-    id: 9,
-    title: "Pengembangan Materi Pembelajaran",
-    description:
-      "Menyusun dan menyempurnakan materi pembelajaran yang relevan, akurat, dan mudah dipahami.",
+      "Anggota bertugas memonitoring dan mengevaluasi pelaksanaan kurikulum di lingkungan Itera, Merekomendasikan pengembangan pembelajaran yang ada di Itera, Membantu pimpinan dalam memonitoring kegiatan MBKM, Memonitoring sumber daya manusia dalam hal pembelajaran",
   },
 ];
 
@@ -145,6 +121,27 @@ export default function TugasPokok() {
               </p>
             </div>
           ))}
+        </div>
+
+        {/* CTA Section */}
+        <div className="mt-16" data-aos="fade-up">
+          <div className="bg-gradient-to-br from-yellow-50 via-red-50 to-orange-50 rounded-lg border-2 border-red-200 p-8 text-center">
+            <h3 className="text-2xl font-bold text-gray-900 mb-3">
+              Lihat Struktur Organisasi Kami
+            </h3>
+            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+              Pelajari lebih lanjut tentang struktur tim dan organisasi Pusat Kurikulum dan Pengembangan Pembelajaran
+            </p>
+            <Link
+              href="/struktur-organisasi"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500 to-red-600 hover:from-yellow-600 hover:to-red-700 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
+            >
+              Struktur Organisasi
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
