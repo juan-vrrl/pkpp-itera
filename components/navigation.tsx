@@ -1,29 +1,29 @@
-"use client"
+"use client";
 
-import { usePathname } from "next/navigation"
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Menu, X, ChevronDown } from "lucide-react"
-import { useRouter } from "next/navigation"
-import Image from "next/image"
+import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const dropdownMenus = {
   profile: [
     { name: "Tentang", href: "/tentang" },
     { name: "Visi & Misi", href: "/visi-misi" },
+    { name: "Program Kerja", href: "/program-kerja" },
     { name: "Tugas Pokok", href: "/tugas-pokok" },
     { name: "Struktur Organisasi", href: "/struktur-organisasi" },
-    { name: "SDM", href: "/sdm" },
-    { name: "Program Kerja", href: "/program-kerja" },
+    { name: "Sumber Daya Manusia", href: "/sdm" },
   ],
   informasi: [
     { name: "Pedoman Pertor", href: "https://bit.ly/PedomandanPertorItera" },
-  ] 
-} as const
+  ],
+} as const;
 
-type DropdownKey = keyof typeof dropdownMenus
+type DropdownKey = keyof typeof dropdownMenus;
 
 const navigation: Array<
   | { name: string; href: string; dropdownItems?: never }
@@ -34,34 +34,34 @@ const navigation: Array<
   { name: "Informasi", dropdownItems: "informasi" },
   { name: "Berita", href: "/berita" },
   { name: "Kontak", href: "#kontak" },
-]
+];
 
 export function Navigation() {
-  const pathname = usePathname()
-  const [isOpen, setIsOpen] = useState(false)
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
-  const [mounted, setMounted] = useState(false)
-  const router = useRouter()
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
-    setIsOpen(false)
-  }, [pathname])
+    setIsOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden"
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "unset"
+      document.body.style.overflow = "unset";
     }
 
     return () => {
-      document.body.style.overflow = "unset"
-    }
-  }, [isOpen])
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
 
   if (!mounted) {
     return (
@@ -72,7 +72,10 @@ export function Navigation() {
           </div>
           <nav className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
-              <span key={item.name} className="text-sm font-medium text-muted-foreground">
+              <span
+                key={item.name}
+                className="text-sm font-medium text-muted-foreground"
+              >
                 {item.name}
               </span>
             ))}
@@ -81,21 +84,36 @@ export function Navigation() {
             <Button variant="default" size="lg" className="bg-[#E84545]">
               Masuk
             </Button>
-            <button className="md:hidden p-2 rounded-md" aria-label="Toggle menu">
+            <button
+              className="md:hidden p-2 rounded-md"
+              aria-label="Toggle menu"
+            >
               <Menu size={24} />
             </button>
           </div>
         </div>
       </header>
-    )
+    );
   }
 
   return (
     <header className="sticky px-4 lg:px-8 top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="w-full flex h-16 items-center justify-between px-[15%]">
-        <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
-          <button onClick={() => router.push("/")} className="flex items-center space-x-2 cursor-pointer">
-            <Image src="/Logo1.png" alt="PKPP ITERA Logo" width={45} height={45} />
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <button
+            onClick={() => router.push("/")}
+            className="flex items-center space-x-2 cursor-pointer"
+          >
+            <Image
+              src="/Logo1.png"
+              alt="PKPP ITERA Logo"
+              width={45}
+              height={45}
+            />
             <span className="text-2xl font-bold text-primary">PKPP ITERA</span>
           </button>
         </motion.div>
@@ -115,7 +133,7 @@ export function Navigation() {
               className="relative"
               onMouseEnter={() => {
                 if (item.dropdownItems) {
-                  setOpenDropdown(item.name)
+                  setOpenDropdown(item.name);
                 }
               }}
               onMouseLeave={() => setOpenDropdown(null)}
@@ -123,27 +141,31 @@ export function Navigation() {
               <button
                 onClick={() => {
                   if (item.dropdownItems) {
-                    return
+                    return;
                   }
                   if (item.href) {
                     if (item.href.startsWith("#")) {
                       if (pathname === "/") {
-                        const section = document.querySelector(item.href)
+                        const section = document.querySelector(item.href);
                         if (section) {
-                          section.scrollIntoView({ behavior: "smooth" })
+                          section.scrollIntoView({ behavior: "smooth" });
                         }
                       } else {
-                        router.push(`/${item.href}`)
+                        router.push(`/${item.href}`);
                       }
                     } else {
-                      router.push(item.href)
+                      router.push(item.href);
                     }
                   }
                 }}
                 className={cn(
                   "text-sm font-medium transition-colors relative flex items-center gap-1",
-                  item.dropdownItems ? "cursor-default" : "cursor-pointer hover:text-primary",
-                  pathname === item.href ? "text-primary" : "text-muted-foreground",
+                  item.dropdownItems
+                    ? "cursor-default"
+                    : "cursor-pointer hover:text-primary",
+                  pathname === item.href
+                    ? "text-primary"
+                    : "text-muted-foreground"
                 )}
               >
                 {item.name}
@@ -177,24 +199,26 @@ export function Navigation() {
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.2 }}
                   >
-                    {dropdownMenus[item.dropdownItems].map((dropdownItem, dropdownIndex) => (
-                      <motion.button
-                        key={dropdownItem.name}
-                        onClick={() => {
-                          router.push(dropdownItem.href)
-                          setOpenDropdown(null)
-                        }}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{
-                          duration: 0.2,
-                          delay: dropdownIndex * 0.05,
-                        }}
-                        className="w-full text-left px-4 py-2.5 text-sm hover:bg-accent text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-                      >
-                        {dropdownItem.name}
-                      </motion.button>
-                    ))}
+                    {dropdownMenus[item.dropdownItems].map(
+                      (dropdownItem, dropdownIndex) => (
+                        <motion.button
+                          key={dropdownItem.name}
+                          onClick={() => {
+                            router.push(dropdownItem.href);
+                            setOpenDropdown(null);
+                          }}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{
+                            duration: 0.2,
+                            delay: dropdownIndex * 0.05,
+                          }}
+                          className="w-full text-left px-4 py-2.5 text-sm hover:bg-accent text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                        >
+                          {dropdownItem.name}
+                        </motion.button>
+                      )
+                    )}
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -227,12 +251,15 @@ export function Navigation() {
             whileTap={{ scale: 0.95 }}
             aria-label="Toggle menu"
           >
-            <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
+            <motion.div
+              animate={{ rotate: isOpen ? 180 : 0 }}
+              transition={{ duration: 0.2 }}
+            >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </motion.div>
           </motion.button>
         </div>
       </div>
     </header>
-  )
+  );
 }
