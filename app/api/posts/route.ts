@@ -24,7 +24,7 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const user = await requireAuth()
-    const { title, slug, content, excerpt, published } = await request.json()
+    const { title, slug, content, excerpt, published, images } = await request.json()
 
     if (!title || !slug || !content) {
       return NextResponse.json({ error: "Title, slug, and content are required" }, { status: 400 })
@@ -46,6 +46,8 @@ export async function POST(request: NextRequest) {
         content,
         excerpt: excerpt || null,
         published: published || false,
+        images: images || [],
+        featuredImage: images && images.length > 0 ? images[0] : null,
         authorId: user.id,
       },
     })

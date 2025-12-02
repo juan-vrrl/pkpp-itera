@@ -5,7 +5,46 @@ import { useParams, notFound } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { CalendarDays, ArrowLeft, Loader2, BookOpen } from "lucide-react"
+import Autoplay from "embla-carousel-autoplay"
+
+function AutoScrollCarousel({ images, title }: { images: string[], title: string }) {
+  return (
+    <Carousel 
+      className="w-full" 
+      opts={{ loop: true }}
+      plugins={[
+        Autoplay({
+          delay: 3000,
+        }),
+      ]}
+    >
+      <CarouselContent>
+        {images.map((image, index) => (
+          <CarouselItem key={index}>
+            <div className="rounded-lg overflow-hidden border border-gray-200 shadow-lg">
+              <div className="relative h-80 md:h-96">
+                <Image
+                  src={image}
+                  alt={`${title} - Image ${index + 1}`}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      {images.length > 1 && (
+        <>
+          <CarouselPrevious className="left-4" />
+          <CarouselNext className="right-4" />
+        </>
+      )}
+    </Carousel>
+  )
+}
 
 interface Post {
   id: string
@@ -15,6 +54,7 @@ interface Post {
   excerpt: string | null
   published: boolean
   featuredImage: string | null
+  images: string[]
   createdAt: string
   updatedAt: string
   author: {
@@ -140,15 +180,18 @@ export default function BlogPostPage() {
       </div>
 
       <div className="max-w-4xl mx-auto px-6 py-12">
-        <div className="mb-12 rounded-lg overflow-hidden border border-gray-200 shadow-lg" data-aos="zoom-in">
-          <div className="relative h-80 md:h-96 bg-gradient-to-br from-yellow-100 to-red-100 flex items-center justify-center">
-                    {post.featuredImage ? (
-                      <Image src={post.featuredImage} alt={post.title} fill className="object-cover" />
-                    ) : (
-                      <BookOpen className="w-12 h-12 text-yellow-600 opacity-40" />
-                    )}
+        {/* Image Carousel */}
+        {post.images && post.images.length > 0 ? (
+          <div className="mb-12" data-aos="zoom-in">
+            <AutoScrollCarousel images={post.images} title={post.title} />
           </div>
-        </div>
+        ) : (
+          <div className="mb-12 rounded-lg overflow-hidden border border-gray-200 shadow-lg" data-aos="zoom-in">
+            <div className="relative h-80 md:h-96 bg-gradient-to-br from-yellow-100 to-red-100 flex items-center justify-center">
+              <BookOpen className="w-12 h-12 text-yellow-600 opacity-40" />
+            </div>
+          </div>
+        )}
 
         <div className="mb-12" data-aos="fade-up">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-balance">{post.title}</h1>
@@ -156,23 +199,13 @@ export default function BlogPostPage() {
         </div>
 
         <div
-          className="flex flex-col md:flex-row md:items-center md:justify-between pb-8 mb-12 border-b border-gray-200"
+          className="pb-8 mb-12 border-b border-gray-200"
           data-aos="fade-up"
         >
-          <div className="flex items-center gap-2 text-sm text-gray-600 mb-4 md:mb-0">
+          <div className="flex items-center gap-2 text-sm text-gray-600">
             <CalendarDays className="h-4 w-4 text-red-600" />
             <span>{formatDate(post.createdAt)}</span>
           </div>
-          <Button
-            asChild
-            variant="outline"
-            className="w-fit border-red-200 text-red-600 hover:text-red-700 hover:bg-red-50 bg-transparent"
-          >
-            <Link href="/berita">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Kembali ke Berita
-            </Link>
-          </Button>
         </div>
 
         <article
@@ -184,7 +217,7 @@ export default function BlogPostPage() {
         </article>
 
         <footer className="mt-16 pt-12 border-t border-gray-200" data-aos="fade-up" data-aos-delay="200">
-          <div className="flex flex-col md:flex-row justify-between gap-4 md:gap-8">
+          <div className="flex justify-center">
             <Button
               asChild
               variant="outline"
@@ -194,9 +227,6 @@ export default function BlogPostPage() {
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Kembali ke Berita
               </Link>
-            </Button>
-            <Button asChild className="bg-red-600 hover:bg-red-700 text-white">
-              <Link href="/contact">Hubungi Kami</Link>
             </Button>
           </div>
         </footer>

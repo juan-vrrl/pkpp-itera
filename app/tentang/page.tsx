@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, FileText, Target } from "lucide-react";
+import { ArrowRight, Target } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export default function TentangPage() {

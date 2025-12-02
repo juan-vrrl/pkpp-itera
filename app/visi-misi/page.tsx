@@ -1,31 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { Eye, Target, Lightbulb, Heart } from "lucide-react";
+import { Eye, Target } from "lucide-react";
 
 export default function VisiMisiPage() {
-  const values = [
-    {
-      icon: Eye,
-      title: "Inovasi",
-      description: "Mendorong pemikiran kreatif dan solusi modern",
-    },
-    {
-      icon: Heart,
-      title: "Integritas",
-      description: "Menjunjung tinggi nilai-nilai etika dan transparansi",
-    },
-    {
-      icon: Lightbulb,
-      title: "Keunggulan",
-      description: "Komitmen terhadap standar kualitas tertinggi",
-    },
-    {
-      icon: Target,
-      title: "Kolaborasi",
-      description: "Bekerja bersama untuk mencapai tujuan bersama",
-    },
-  ];
 
   return (
     <div className="w-full">

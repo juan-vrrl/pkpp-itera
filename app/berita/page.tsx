@@ -13,6 +13,7 @@ interface Post {
   excerpt: string | null
   published: boolean
   featuredImage: string | null
+  images: string[]
   createdAt: string
   updatedAt: string
   author: {
@@ -144,7 +145,10 @@ export default function BeritaPage() {
                       {posts[0].title}
                     </h2>
                     <p className="text-gray-600 text-base leading-relaxed mb-6">
-                      {posts[0].excerpt || posts[0].content.substring(0, 150) + "..."}
+                      {posts[0].excerpt || (() => {
+                        const cleanContent = posts[0].content.replace(/<[^>]*>/g, '')
+                        return cleanContent.length > 150 ? cleanContent.substring(0, 150) + "..." : cleanContent
+                      })()}
                     </p>
                   </div>
                   <div className="flex items-center justify-between pt-6 border-t border-gray-100">
@@ -190,7 +194,10 @@ export default function BeritaPage() {
                       {post.title}
                     </h3>
                     <p className="text-gray-600 text-sm mb-4 line-clamp-2 flex-1">
-                      {post.excerpt || post.content.substring(0, 100) + "..."}
+                      {post.excerpt || (() => {
+                        const cleanContent = post.content.replace(/<[^>]*>/g, '')
+                        return cleanContent.length > 100 ? cleanContent.substring(0, 100) + "..." : cleanContent
+                      })()}
                     </p>
 
                     <div className="flex items-center justify-between pt-4 border-t border-gray-100">

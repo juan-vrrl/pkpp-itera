@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Switch } from "@/components/ui/switch"
 import { RichTextEditor } from "@/components/admin/rich-text-editor"
+import { ImageUpload } from "@/components/admin/image-upload"
 import { ArrowLeft, Save, Loader2 } from "lucide-react"
 import { toast } from "react-toastify"
 
@@ -22,6 +23,13 @@ interface Post {
   content: string
   excerpt: string | null
   published: boolean
+  images: string[]
+}
+
+interface ImageFile {
+  file?: File;
+  preview: string;
+  url?: string;
 }
 
 interface PostFormProps {
@@ -36,8 +44,29 @@ export function PostForm({ post }: PostFormProps) {
     excerpt: post?.excerpt || "",
     published: post?.published ?? true,
   })
+  const [imageFiles, setImageFiles] = useState<ImageFile[]>(
+    post?.images?.map(url => ({ preview: url, url })) || []
+  )
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
+  
+  // Warn user before leaving with unsaved changes
+  useEffect(() => {
+    const hasChanges = 
+      formData.title !== (post?.title || "") ||
+      formData.content !== (post?.content || "") ||
+      imageFiles.length !== (post?.images?.length || 0)
+
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (hasChanges) {
+        e.preventDefault()
+        return (e.returnValue = "")
+      }
+    }
+
+    window.addEventListener("beforeunload", handleBeforeUnload)
+    return () => window.removeEventListener("beforeunload", handleBeforeUnload)
+  }, [formData, imageFiles, post])
 
   const generateSlug = (title: string) => {
     return title
@@ -62,6 +91,56 @@ export function PostForm({ post }: PostFormProps) {
     setIsLoading(true)
 
     try {
+      // Step 1: Upload new images to Cloudinary
+      const uploadedUrls: string[] = []
+      const existingUrls: string[] = []
+      
+      for (const imageFile of imageFiles) {
+        if (imageFile.file) {
+          // New file - upload it
+          const formData = new FormData()
+          formData.append("file", imageFile.file)
+
+          const uploadResponse = await fetch("/api/upload", {
+            method: "POST",
+            body: formData,
+          })
+
+          if (!uploadResponse.ok) {
+            throw new Error("Failed to upload image")
+          }
+
+          const uploadData = await uploadResponse.json()
+          uploadedUrls.push(uploadData.url)
+        } else if (imageFile.url) {
+          // Existing image from database
+          existingUrls.push(imageFile.url)
+        }
+      }
+
+      const allImageUrls = [...existingUrls, ...uploadedUrls]
+
+      // Step 2: Delete removed images if editing
+      if (post?.images) {
+        const removedImages = post.images.filter(
+          (img) => !allImageUrls.includes(img)
+        )
+        
+        for (const img of removedImages) {
+          try {
+            const publicId = img.split('/').slice(-2).join('/').split('.')[0]
+            await fetch('/api/upload', {
+              method: 'DELETE',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ publicId }),
+            })
+          } catch (error) {
+            console.error('Failed to delete removed image:', error)
+          }
+        }
+      }
+
+      // Step 3: Create/update post with image URLs
       const url = post ? `/api/posts/${post.id}` : "/api/posts"
       const method = post ? "PUT" : "POST"
 
@@ -70,7 +149,10 @@ export function PostForm({ post }: PostFormProps) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          images: allImageUrls,
+        }),
       })
 
       const data = await response.json()
@@ -80,6 +162,19 @@ export function PostForm({ post }: PostFormProps) {
         router.push("/admin/posts")
         router.refresh()
       } else {
+        // If post creation failed, delete uploaded images
+        for (const url of uploadedUrls) {
+          try {
+            const publicId = url.split('/').slice(-2).join('/').split('.')[0]
+            await fetch('/api/upload', {
+              method: 'DELETE',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ publicId }),
+            })
+          } catch (error) {
+            console.error('Failed to cleanup uploaded image:', error)
+          }
+        }
         toast.error(data.error || "Gagal menyimpan postingan")
       }
     } catch (error) {
@@ -152,6 +247,27 @@ export function PostForm({ post }: PostFormProps) {
               />
               <p className="text-sm text-muted-foreground mt-1">
                 Ringkasan singkat yang ditampilkan dalam daftar berita. Biarkan kosong untuk menghasilkan secara otomatis.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Gambar Berita</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div>
+              <Label>Upload Gambar (Maks. 5 gambar)</Label>
+              <div className="mt-2">
+                <ImageUpload
+                  value={imageFiles}
+                  onChange={setImageFiles}
+                  maxImages={5}
+                />
+              </div>
+              <p className="text-sm text-muted-foreground mt-2">
+                Gambar pertama akan digunakan sebagai gambar utama berita.
               </p>
             </div>
           </CardContent>

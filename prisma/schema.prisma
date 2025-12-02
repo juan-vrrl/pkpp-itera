@@ -32,6 +32,7 @@ model Post {
   excerpt       String?
   published     Boolean  @default(false)
   featuredImage String?
+  images        String[] @default([])
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
