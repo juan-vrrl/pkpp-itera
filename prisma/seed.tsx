@@ -13,7 +13,7 @@ async function main() {
     update: {},
     create: {
       id: "admin-user-id",
-      email: "admin@company.com",
+      email: "admin@itera.ac.id",
       password: hashedPassword,
       name: "Admin User",
       role: "ADMIN",
