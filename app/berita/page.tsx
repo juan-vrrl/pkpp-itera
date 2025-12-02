@@ -117,9 +117,32 @@ export default function BeritaPage() {
       </div>
 
       <div className="max-w-6xl mx-auto px-6 py-16">
-        {/* Newest Article */}
-        {posts.length > 0 && (
-          <Link href={`/berita/${posts[0].slug}`} className="mb-16 group cursor-pointer block" data-aos="zoom-in">
+        {posts.length === 0 ? (
+          <div className="text-center py-20" data-aos="fade-up">
+            <div className="max-w-md mx-auto">
+              <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <BookOpen className="w-10 h-10 text-gray-400" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                Belum Ada Berita
+              </h3>
+              <p className="text-gray-600 mb-8">
+                Saat ini belum ada berita yang dipublikasikan. Silakan cek kembali nanti.
+              </p>
+              <Link
+                href="/"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500 to-red-600 hover:from-yellow-600 hover:to-red-700 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300"
+              >
+                Kembali ke Beranda
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        ) : (
+          <>
+            {/* Newest Article */}
+            {posts.length > 0 && (
+              <Link href={`/berita/${posts[0].slug}`} className="mb-16 group cursor-pointer block" data-aos="zoom-in">
             <div className="relative bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-red-300 hover:shadow-2xl transition-all duration-300">
               <div className="grid md:grid-cols-3 gap-0">
                 {/* Newest Image Placeholder */}
@@ -226,7 +249,9 @@ export default function BeritaPage() {
             </button>
           </div>
         )}
+          </>
+        )}
       </div>
     </div>
-  )
+  );
 }
