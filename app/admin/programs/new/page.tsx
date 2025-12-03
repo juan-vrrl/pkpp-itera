@@ -14,7 +14,7 @@ export default async function NewProgramPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center gap-4" data-aos="fade-down">
+      <div className="flex items-center gap-4">
         <Button variant="ghost" size="sm" asChild>
           <Link href="/admin/programs">
             <ArrowLeft className="h-4 w-4 mr-2" />
@@ -22,9 +22,7 @@ export default async function NewProgramPage() {
           </Link>
         </Button>
       </div>
-      <div data-aos="fade-up">
-        <ProgramForm />
-      </div>
+      <ProgramForm />
     </div>
   )
 }

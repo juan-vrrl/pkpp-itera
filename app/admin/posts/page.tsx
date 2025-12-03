@@ -27,7 +27,7 @@ export default async function AdminPostsPage() {
   return (
     <div className="space-y-8">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-yellow-500 to-yellow-600 text-white rounded-2xl p-8 shadow-lg" data-aos="fade-down">
+      <div className="relative overflow-hidden bg-gradient-to-br from-yellow-500 to-yellow-600 text-white rounded-2xl p-8 shadow-lg">
         <div className="absolute top-0 right-0 w-64 h-64 bg-red-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-yellow-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 translate-y-1/2 -translate-x-1/2" />
         
@@ -46,7 +46,7 @@ export default async function AdminPostsPage() {
       </div>
 
       {posts.length > 0 ? (
-        <div className="space-y-4" data-aos="fade-up">
+        <div className="space-y-4">
           {posts.map((post) => (
             <Card key={post.id} className="hover:shadow-lg transition-shadow border-l-4 border-l-yellow-500">
               <CardHeader className="bg-gradient-to-r from-yellow-50/50 to-red-50/50">
@@ -99,7 +99,7 @@ export default async function AdminPostsPage() {
           ))}
         </div>
       ) : (
-        <Card className="border-t-4 border-t-yellow-500 shadow-lg" data-aos="fade-up">
+        <Card className="border-t-4 border-t-yellow-500 shadow-lg">
           <CardContent className="text-center py-16 bg-gradient-to-br from-yellow-50/50 to-red-50/50">
             <div className="max-w-md mx-auto">
               <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">

@@ -15,7 +15,7 @@ export default async function AdminSettingsPage() {
   return (
     <div className="space-y-8">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-yellow-500 to-yellow-600 text-white rounded-2xl p-8 shadow-lg" data-aos="fade-down">
+      <div className="relative overflow-hidden bg-gradient-to-br from-yellow-500 to-yellow-600 text-white rounded-2xl p-8 shadow-lg">
         <div className="absolute top-0 right-0 w-64 h-64 bg-red-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-yellow-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 translate-y-1/2 -translate-x-1/2" />
         
@@ -25,7 +25,7 @@ export default async function AdminSettingsPage() {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6" data-aos="fade-up" data-aos-delay="100">
+      <div className="grid md:grid-cols-2 gap-6">
         <Card className="border-t-4 border-t-yellow-500 shadow-lg hover:shadow-xl transition-shadow">
           <CardHeader className="bg-gradient-to-r from-yellow-50/80 to-red-50/50">
             <CardTitle className="flex items-center space-x-2 text-gray-900">

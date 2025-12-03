@@ -11,14 +11,12 @@ export default async function NewPostPage() {
 
   return (
     <div className="space-y-8">
-      <div data-aos="fade-down">
+      <div>
         <h1 className="text-3xl font-bold">Buat Berita Baru</h1>
         <p className="text-muted-foreground">Tulis dan publikasikan berita baru</p>
       </div>
 
-      <div data-aos="fade-up">
-        <PostForm />
-      </div>
+      <PostForm />
     </div>
   )
 }
