@@ -23,7 +23,7 @@ export default async function MessagesPage() {
   return (
     <div className="space-y-8">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-yellow-500 to-yellow-600 text-white rounded-2xl p-8 shadow-lg">
+      <div className="relative overflow-hidden bg-gradient-to-br from-yellow-500 to-yellow-600 text-white rounded-2xl p-8 shadow-lg" data-aos="fade-down">
         <div className="absolute top-0 right-0 w-64 h-64 bg-red-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-yellow-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 translate-y-1/2 -translate-x-1/2" />
         
@@ -48,7 +48,7 @@ export default async function MessagesPage() {
       </div>
 
       {messages.length === 0 ? (
-        <Card className="border-t-4 border-t-yellow-500 shadow-lg">
+        <Card className="border-t-4 border-t-yellow-500 shadow-lg" data-aos="fade-up">
           <CardContent className="flex flex-col items-center justify-center py-16 bg-gradient-to-br from-yellow-50/50 to-red-50/50">
             <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mb-6">
               <Mail className="h-10 w-10 text-yellow-600" />
@@ -60,7 +60,7 @@ export default async function MessagesPage() {
           </CardContent>
         </Card>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-4" data-aos="fade-up">
           {messages.map((message) => (
             <Card 
               key={message.id} 

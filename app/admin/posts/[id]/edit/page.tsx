@@ -21,12 +21,14 @@ export default async function EditPostPage({ params }: { params: Promise<{ id: s
 
   return (
     <div className="space-y-8">
-      <div>
+      <div data-aos="fade-down">
         <h1 className="text-3xl font-bold">Edit Post</h1>
         <p className="text-muted-foreground">Update your blog post</p>
       </div>
 
-      <PostForm post={post} />
+      <div data-aos="fade-up">
+        <PostForm post={post} />
+      </div>
     </div>
   )
 }
